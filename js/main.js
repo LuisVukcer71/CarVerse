@@ -12,10 +12,11 @@ const collisionObjects = [];
 // UI initialisieren und API erhalten
 const uiAPI = initUI(controls);
 
+
 // Modell laden
 loadModel(scene, collisionObjects);
 
-// Interaktive Elemente erstellen (mit UI-Callback)
+// Interaktive Elemente erstellen
 createInteractiveButton(scene, camera, controls, uiAPI.openPopup);
 
 // === Render Loop ===

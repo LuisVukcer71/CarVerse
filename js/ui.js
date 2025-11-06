@@ -113,7 +113,6 @@ export function initUI(controls) {
         window.setPlayerSpeed(speed);
     });
 
-    // Öffentliche API zurückgeben
     return {
         openPopup,
         closePopup,

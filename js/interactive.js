@@ -55,7 +55,7 @@ export function createInteractiveButton(scene, camera, controls, openPopupCallba
     interactionRaycaster.setFromCamera(centerPoint, camera);
     const intersects = interactionRaycaster.intersectObject(button3D);
     
-    if (intersects.length > 0) {
+    if (intersects.length > 0 ){
       // Nur wenn Button getroffen wurde: Popup öffnen
       openPopupCallback();
       handleButtonClick(button3D, buttonMaterial, intersects[0].distance);
