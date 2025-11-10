@@ -52,7 +52,7 @@ export function loadModel(scene, collisionObjects) {
             console.log("Modell erfolgreich geladen");
         },
         (progress) => {
-            // Ladefortschritt (optional)
+            // Ladefortschritt
             const percent = (progress.loaded / progress.total) * 100;
             console.log(`Lade Modell: ${percent.toFixed(0)}%`);
         },

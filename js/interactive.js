@@ -28,6 +28,47 @@ function createTextTexture(text, width = 512, height = 256) {
 }
 
 /**
+ * Erstellt interaktive 3D-Buttons in der Szene
+ */
+export function createInteractiveButton(scene, camera, controls, openPopupCallback, buttonText = "KLICK MICH") {
+  // Button Geometrie und Material mit Text-Texture
+  const buttonGeometry = new THREE.BoxGeometry(2, 1, 0.2);
+  const textTexture = createTextTexture(buttonText);
+  
+  const buttonMaterial = new THREE.MeshStandardMaterial({ 
+    map: textTexture,
+    emissive: 0xff0000,
+    emissiveIntensity: 0.2
+  });
+  
+  const button3D = new THREE.Mesh(buttonGeometry, buttonMaterial);
+  button3D.position.set(0, 4, -129);
+  button3D.userData.isInteractive = true; // Marker für interaktive Objekte
+  scene.add(button3D);
+  
+  // Raycaster für Interaktion
+  const interactionRaycaster = new THREE.Raycaster();
+  const centerPoint = new THREE.Vector2(0, 0);
+  
+  // Click-Handler
+  document.addEventListener('click', () => {
+    if (!controls.isLocked) return;
+    
+    // Raycasting vom Kamera-Zentrum
+    interactionRaycaster.setFromCamera(centerPoint, camera);
+    const intersects = interactionRaycaster.intersectObject(button3D);
+    
+    if (intersects.length > 0 ){
+      // Nur wenn Button getroffen wurde: Popup öffnen
+      openPopupCallback();
+      handleButtonClick(button3D, buttonMaterial, intersects[0].distance);
+    }
+  });
+  
+  return button3D;
+}
+
+/**
  * Behandelt Button-Klicks mit visuellem Feedback
  */
 function handleButtonClick(button, material, distance, buttonid, carData) {
