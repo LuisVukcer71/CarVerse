@@ -157,22 +157,26 @@ input[type="range"] {
   transform: translateX(-50%);
 }
 
-/* === ESC Menü === */
+/* === Popup === */
 #popup {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.95);
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   color: white;
   padding: 35px 45px;
   border-radius: 15px;
   text-align: center;
   display: none;
-  width: 340px;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
   transition: all 0.3s ease;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
 }
+
 #popup.show {
   display: block;
   transform: translate(-50%, -50%) scale(1);
@@ -180,7 +184,33 @@ input[type="range"] {
 
 #popup h2 {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+#popup p {
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+#popup p strong {
+  color: #ffffff;
+}
+
+/* Nur der Fließtext linksbündig */
+#popup p[style*="text-align: justify"] {
+  text-align: justify !important;
+}
+
+#popup img
+{
+  width: 80px;
+  height: auto;
+  margin: 10px;
 }
 
 #closepopup {
@@ -192,7 +222,32 @@ input[type="range"] {
   color: white;
   font-size: 24px;
   cursor: pointer;
+  z-index: 10;
 }
+
 #closepopup:hover {
   color: #ff5555;
+}
+
+#inhalt1 {
+  margin-top: 15px;
+}
+
+/* Scrollbar Styling für Popup */
+#popup::-webkit-scrollbar {
+  width: 8px;
+}
+
+#popup::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+#popup::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+#popup::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
