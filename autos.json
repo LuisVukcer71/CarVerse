@@ -1,110 +1,112 @@
-[
-    {
-        "buttonid": 1,
-        "Marke": "Ferrari",
-        "titel": "Ferrari Purosangue",
-        "Erscheinungsjahr": "2022",
-        "Leistung": "725 PS / 533 kW",
-        "0-100 Zeit": "3.3 s",
-        "fließtext": "Der Ferrari Purosangue ist Ferraris erstes serienmäßiges SUV und setzt neue Maßstäbe in Bezug auf Performance in diesem Fahrzeugsegment. Sein frei saugender V12-Motor sorgt für ein besonders natürliches Ansprechverhalten und einen charakteristischen Klang. Trotz seines höheren Gewichts bietet er die fahrdynamische Präzision eines klassischen Ferrari-Sportwagens."
-    },
-    {
-        "buttonid": 2,
-        "Marke": "Ferrari",
-        "titel": "Ferrari F40",
-        "Erscheinungsjahr": "1987",
-        "Leistung": "478 PS / 352 kW",
-        "0-100 Zeit": "4.1 s",
-        "fließtext": "Der Ferrari F40 gilt als einer der legendärsten Supersportwagen aller Zeiten und war der letzte Ferrari, den Enzo Ferrari persönlich absegnete. Sein Doppelturbo-V8, die radikale Gewichtsreduzierung und das kompromisslose Design machten ihn zum Inbegriff purer Fahrmaschine. Bis heute fasziniert er durch sein rohes, ungefiltertes Fahrerlebnis."
-    },
-    {
-        "buttonid": 3,
-        "Marke": "Ferrari",
-        "titel": "Ferrari LaFerrari",
-        "Erscheinungsjahr": "2013",
-        "Leistung": "963 PS / 708 kW",
-        "0-100 Zeit": "2.4 s",
-        "fließtext": "Der LaFerrari kombiniert einen V12-Hochleistungsmotor mit einem Formel-1-inspirierten Hybridsystem und markiert damit einen technologischen Meilenstein der Marke. Durch seine aktive Aerodynamik und seinen elektrischen Power-Boost liefert er eine extreme Performance. Er gilt als einer der modernsten und exklusivsten Ferrari aller Zeiten."
-    },
-    {
-        "buttonid": 4,
-        "Marke": "Ferrari",
-        "titel": "Ferrari 250 GTO",
-        "Erscheinungsjahr": "1962",
-        "Leistung": "300 PS / 221 kW",
-        "0-100 Zeit": "ca. 5.4 s",
-        "fließtext": "Der Ferrari 250 GTO ist einer der seltensten und wertvollsten Oldtimer der Welt. Das Fahrzeug wurde für den Rennsport entwickelt und war in seiner Zeit extrem erfolgreich. Aufgrund seiner geringen Stückzahl und seines historischen Erfolgs erzielen Exemplare heute Rekordpreise bei Auktionen."
-    },
-    {
-        "buttonid": 5,
-        "Marke": "Ferrari",
-        "titel": "Ferrari 288 GTO",
-        "Erscheinungsjahr": "1984",
-        "Leistung": "400 PS / 294 kW",
-        "0-100 Zeit": "ca. 5.0 s",
-        "fließtext": "Der Ferrari 288 GTO war als Homologationsmodell für die Rennserie Gruppe B konzipiert. Sein turbogeladener V8 sorgte für beeindruckende Leistung und markierte einen Schritt hin zu moderneren Supersportwagen-Konzepten. Er gilt als direkter Vorgänger des späteren F40."
-    },
-    {
-        "buttonid": 6,
-        "Marke": "Ferrari",
-        "titel": "Ferrari SF71H (F1)",
-        "Erscheinungsjahr": "2018",
-        "Leistung": "ca. 1000 PS / 736 kW",
-        "0-100 Zeit": "< 3 s",
-        "fließtext": "Der Ferrari SF71H war das Formel-1-Auto der Saison 2018 und eines der ersten Ferrari-Modelle mit Halo-Sicherheitsbügel. Er zeichnete sich durch eine sehr effiziente Aerodynamik und ein starkes Hybrid-Antriebssystem aus. Das Fahrzeug war konkurrenzfähig und kämpfte maßgeblich um den WM-Titel."
-    },
-    {
-        "buttonid": 7,
-        "Marke": "Tesla",
-        "titel": "Tesla Roadster (2. Generation, Prototyp)",
-        "Erscheinungsjahr": "vorgestellt 2017",
-        "Leistung": "über 1000 PS / ca. 736 kW",
-        "0-100 Zeit": "1.9 s",
-        "fließtext": "Der neu angekündigte Tesla Roadster der zweiten Generation soll eines der schnellsten Serienfahrzeuge der Welt werden. Mit enormer Beschleunigung und hoher Reichweite will Tesla zeigen, dass Elektrofahrzeuge Supersportwagen übertreffen können. Die endgültige Serienproduktion steht jedoch noch aus."
-    },
-    {
-        "buttonid": 8,
-        "Marke": "Tesla",
-        "titel": "Tesla Roadster (1. Generation)",
-        "Erscheinungsjahr": "2008",
-        "Leistung": "248 PS / 182 kW",
-        "0-100 Zeit": "3.9 s",
-        "fließtext": "Der erste Tesla Roadster war das Fahrzeug, mit dem Tesla weltweit bekannt wurde. Er zeigte, dass Elektroautos sportlich, leistungsfähig und alltagstauglich sein können. Als frühes Elektro-Performance-Car hat er die Wahrnehmung von Elektromobilität nachhaltig verändert."
-    },
-    {
-        "buttonid": 9,
-        "Marke": "Tesla",
-        "titel": "Tesla Cybertruck",
-        "Erscheinungsjahr": "2023",
-        "Leistung": "ca. 845 PS / 621 kW",
-        "0-100 Zeit": "2.6 s",
-        "fließtext": "Der Tesla Cybertruck polarisiert durch sein futuristisches, kantiges Edelstahl-Design. Er kombiniert hohe Geländetauglichkeit mit extremen Beschleunigungswerten und großer Reichweite. Sein Erscheinungsbild hat die Diskussion über Fahrzeugdesign weltweit neu entfacht."
-    },
-    {
-        "buttonid": 10,
-        "Marke": "Tesla",
-        "titel": "Tesla Model 3 (Performance)",
-        "Erscheinungsjahr": "2017",
-        "Leistung": "450 PS / 331 kW",
-        "0-100 Zeit": "3.3 s",
-        "fließtext": "Das Tesla Model 3 ist eines der meistverkauften Elektroautos weltweit und spielt eine zentrale Rolle in der globalen Elektrifizierung des Verkehrs. In der Performance-Variante bietet es eine beeindruckende Beschleunigung und ein minimalistisches, softwarezentriertes Innenraumkonzept. Sein Erfolg zeigt, dass Elektroautos im Massenmarkt angekommen sind."
-    },
-    {
-        "buttonid": 11,
-        "Marke": "Tesla",
-        "titel": "Tesla Roadster (2. Generation, Prototyp)",
-        "Erscheinungsjahr": "vorgestellt 2017",
-        "Leistung": "über 1000 PS / ca. 736 kW",
-        "0-100 Zeit": "1.9 s",
-        "fließtext": "Wie bereits erwähnt, soll der kommende Tesla Roadster die Grenzen der Elektro-Performance neu definieren. Seine versprochene Beschleunigung und Reichweite machen ihn zu einem der meist erwarteten Fahrzeuge der kommenden Jahre. Die tatsächliche Markteinführung bleibt jedoch noch abzuwarten."
-    },
-    {
-        "buttonid": 12,
-        "Marke": "Tesla",
-        "titel": "Tesla Model Y (Performance)",
-        "Erscheinungsjahr": "2020",
-        "Leistung": "456 PS / 335 kW",
-        "0-100 Zeit": "3.7 s",
-        "fließtext": "Das Tesla Model Y ist ein kompaktes Elektro-SUV, das viel Platz mit hoher Effizienz verbindet. Besonders in der Performance-Version bietet es sportliche Fahrleistungen trotz familientauglichem Konzept. Es gilt als eines der global erfolgreichsten Elektromodelle der letzten Jahre."
-    }
-]
+{
+    "cars": [
+        {
+            "buttonid": 1,
+            "Marke": "Ferrari",
+            "titel": "Ferrari Purosangue",
+            "Erscheinungsjahr": "2022",
+            "Leistung": "725 PS / 533 kW",
+            "0-100 Zeit": "3.3 s",
+            "fließtext": "Der Ferrari Purosangue ist Ferraris erstes serienmäßiges SUV und setzt neue Maßstäbe in Bezug auf Performance in diesem Fahrzeugsegment. Sein frei saugender V12-Motor sorgt für ein besonders natürliches Ansprechverhalten und einen charakteristischen Klang. Trotz seines höheren Gewichts bietet er die fahrdynamische Präzision eines klassischen Ferrari-Sportwagens."
+        },
+        {
+            "buttonid": 2,
+            "Marke": "Ferrari",
+            "titel": "Ferrari F40",
+            "Erscheinungsjahr": "1987",
+            "Leistung": "478 PS / 352 kW",
+            "0-100 Zeit": "4.1 s",
+            "fließtext": "Der Ferrari F40 gilt als einer der legendärsten Supersportwagen aller Zeiten und war der letzte Ferrari, den Enzo Ferrari persönlich absegnete. Sein Doppelturbo-V8, die radikale Gewichtsreduzierung und das kompromisslose Design machten ihn zum Inbegriff purer Fahrmaschine. Bis heute fasziniert er durch sein rohes, ungefiltertes Fahrerlebnis."
+        },
+        {
+            "buttonid": 3,
+            "Marke": "Ferrari",
+            "titel": "Ferrari LaFerrari",
+            "Erscheinungsjahr": "2013",
+            "Leistung": "963 PS / 708 kW",
+            "0-100 Zeit": "2.4 s",
+            "fließtext": "Der LaFerrari kombiniert einen V12-Hochleistungsmotor mit einem Formel-1-inspirierten Hybridsystem und markiert damit einen technologischen Meilenstein der Marke. Durch seine aktive Aerodynamik und seinen elektrischen Power-Boost liefert er eine extreme Performance. Er gilt als einer der modernsten und exklusivsten Ferrari aller Zeiten."
+        },
+        {
+            "buttonid": 4,
+            "Marke": "Ferrari",
+            "titel": "Ferrari 250 GTO",
+            "Erscheinungsjahr": "1962",
+            "Leistung": "300 PS / 221 kW",
+            "0-100 Zeit": "ca. 5.4 s",
+            "fließtext": "Der Ferrari 250 GTO ist einer der seltensten und wertvollsten Oldtimer der Welt. Das Fahrzeug wurde für den Rennsport entwickelt und war in seiner Zeit extrem erfolgreich. Aufgrund seiner geringen Stückzahl und seines historischen Erfolgs erzielen Exemplare heute Rekordpreise bei Auktionen."
+        },
+        {
+            "buttonid": 5,
+            "Marke": "Ferrari",
+            "titel": "Ferrari 288 GTO",
+            "Erscheinungsjahr": "1984",
+            "Leistung": "400 PS / 294 kW",
+            "0-100 Zeit": "ca. 5.0 s",
+            "fließtext": "Der Ferrari 288 GTO war als Homologationsmodell für die Rennserie Gruppe B konzipiert. Sein turbogeladener V8 sorgte für beeindruckende Leistung und markierte einen Schritt hin zu moderneren Supersportwagen-Konzepten. Er gilt als direkter Vorgänger des späteren F40."
+        },
+        {
+            "buttonid": 6,
+            "Marke": "Ferrari",
+            "titel": "Ferrari SF71H (F1)",
+            "Erscheinungsjahr": "2018",
+            "Leistung": "ca. 1000 PS / 736 kW",
+            "0-100 Zeit": "< 3 s",
+            "fließtext": "Der Ferrari SF71H war das Formel-1-Auto der Saison 2018 und eines der ersten Ferrari-Modelle mit Halo-Sicherheitsbügel. Er zeichnete sich durch eine sehr effiziente Aerodynamik und ein starkes Hybrid-Antriebssystem aus. Das Fahrzeug war konkurrenzfähig und kämpfte maßgeblich um den WM-Titel."
+        },
+        {
+            "buttonid": 7,
+            "Marke": "Tesla",
+            "titel": "Tesla Roadster (2. Generation, Prototyp)",
+            "Erscheinungsjahr": "vorgestellt 2017",
+            "Leistung": "über 1000 PS / ca. 736 kW",
+            "0-100 Zeit": "1.9 s",
+            "fließtext": "Der neu angekündigte Tesla Roadster der zweiten Generation soll eines der schnellsten Serienfahrzeuge der Welt werden. Mit enormer Beschleunigung und hoher Reichweite will Tesla zeigen, dass Elektrofahrzeuge Supersportwagen übertreffen können. Die endgültige Serienproduktion steht jedoch noch aus."
+        },
+        {
+            "buttonid": 8,
+            "Marke": "Tesla",
+            "titel": "Tesla Roadster (1. Generation)",
+            "Erscheinungsjahr": "2008",
+            "Leistung": "248 PS / 182 kW",
+            "0-100 Zeit": "3.9 s",
+            "fließtext": "Der erste Tesla Roadster war das Fahrzeug, mit dem Tesla weltweit bekannt wurde. Er zeigte, dass Elektroautos sportlich, leistungsfähig und alltagstauglich sein können. Als frühes Elektro-Performance-Car hat er die Wahrnehmung von Elektromobilität nachhaltig verändert."
+        },
+        {
+            "buttonid": 9,
+            "Marke": "Tesla",
+            "titel": "Tesla Cybertruck",
+            "Erscheinungsjahr": "2023",
+            "Leistung": "ca. 845 PS / 621 kW",
+            "0-100 Zeit": "2.6 s",
+            "fließtext": "Der Tesla Cybertruck polarisiert durch sein futuristisches, kantiges Edelstahl-Design. Er kombiniert hohe Geländetauglichkeit mit extremen Beschleunigungswerten und großer Reichweite. Sein Erscheinungsbild hat die Diskussion über Fahrzeugdesign weltweit neu entfacht."
+        },
+        {
+            "buttonid": 10,
+            "Marke": "Tesla",
+            "titel": "Tesla Model 3 (Performance)",
+            "Erscheinungsjahr": "2017",
+            "Leistung": "450 PS / 331 kW",
+            "0-100 Zeit": "3.3 s",
+            "fließtext": "Das Tesla Model 3 ist eines der meistverkauften Elektroautos weltweit und spielt eine zentrale Rolle in der globalen Elektrifizierung des Verkehrs. In der Performance-Variante bietet es eine beeindruckende Beschleunigung und ein minimalistisches, softwarezentriertes Innenraumkonzept. Sein Erfolg zeigt, dass Elektroautos im Massenmarkt angekommen sind."
+        },
+        {
+            "buttonid": 11,
+            "Marke": "Tesla",
+            "titel": "Tesla Roadster (2. Generation, Prototyp)",
+            "Erscheinungsjahr": "vorgestellt 2017",
+            "Leistung": "über 1000 PS / ca. 736 kW",
+            "0-100 Zeit": "1.9 s",
+            "fließtext": "Wie bereits erwähnt, soll der kommende Tesla Roadster die Grenzen der Elektro-Performance neu definieren. Seine versprochene Beschleunigung und Reichweite machen ihn zu einem der meist erwarteten Fahrzeuge der kommenden Jahre. Die tatsächliche Markteinführung bleibt jedoch noch abzuwarten."
+        },
+        {
+            "buttonid": 12,
+            "Marke": "Tesla",
+            "titel": "Tesla Model Y (Performance)",
+            "Erscheinungsjahr": "2020",
+            "Leistung": "456 PS / 335 kW",
+            "0-100 Zeit": "3.7 s",
+            "fließtext": "Das Tesla Model Y ist ein kompaktes Elektro-SUV, das viel Platz mit hoher Effizienz verbindet. Besonders in der Performance-Version bietet es sportliche Fahrleistungen trotz familientauglichem Konzept. Es gilt als eines der global erfolgreichsten Elektromodelle der letzten Jahre."
+        }
+    ]
+}
