@@ -107,6 +107,60 @@
             "Leistung": "456 PS / 335 kW",
             "0-100 Zeit": "3.7 s",
             "fließtext": "Das Tesla Model Y ist ein kompaktes Elektro-SUV, das viel Platz mit hoher Effizienz verbindet. Besonders in der Performance-Version bietet es sportliche Fahrleistungen trotz familientauglichem Konzept. Es gilt als eines der global erfolgreichsten Elektromodelle der letzten Jahre."
+        },
+        {
+            "buttonid": 20,
+            "Marke": "BMW",
+            "titel": "BMW i8",
+            "Erscheinungsjahr": "2014",
+            "Leistung": "362 PS / 266 kW",
+            "0-100 Zeit": "4.4 s",
+            "fließtext": "Der BMW i8 war eines der ersten Plug-in-Hybrid-Sportwagen-Modelle seiner Zeit und verkörperte BMWs Vision von nachhaltiger Performance. Sein futuristisches Design, die Carbonfaser-Bauweise und der kombinierte Antrieb aus Elektro- und Dreizylinder-Turbomotor machten ihn zu einem technologischen Vorreiter. Auch heute gilt er als Symbol für die Verbindung von Effizienz und Sportlichkeit."
+        },
+        {
+            "buttonid": 19,
+            "Marke": "BMW",
+            "titel": "BMW M3 E30 Coupé",
+            "Erscheinungsjahr": "1986",
+            "Leistung": "200 PS / 147 kW",
+            "0-100 Zeit": "6.7 s",
+            "fließtext": "Der BMW M3 E30 ist eine Legende des Automobilsports und der Ursprung der M3-Baureihe. Ursprünglich als Homologationsmodell für den Tourenwagensport entwickelt, überzeugte er mit präzisem Handling und charakteristischem Hochdrehzahl-Vierzylinder. Heute ist er ein gesuchter Klassiker und Inbegriff puristischer Fahrfreude."
+        },
+        {
+            "buttonid": 22,
+            "Marke": "BMW",
+            "titel": "BMW M3 E36 Coupé",
+            "Erscheinungsjahr": "1992",
+            "Leistung": "286 PS / 210 kW",
+            "0-100 Zeit": "5.5 s",
+            "fließtext": "Mit dem M3 E36 führte BMW den Reihensechszylinder in die M3-Baureihe ein und schuf damit eine neue Generation von Performance-Coupés. Der E36 bot mehr Komfort und Alltagstauglichkeit, ohne den sportlichen Anspruch zu verlieren. Besonders sein geschmeidiger Motorlauf und die präzise Fahrdynamik machten ihn zum Favoriten vieler Enthusiasten."
+        },
+        {
+            "buttonid": 21,
+            "Marke": "BMW",
+            "titel": "BMW M5 Competition (F90)",
+            "Erscheinungsjahr": "2018",
+            "Leistung": "625 PS / 460 kW",
+            "0-100 Zeit": "3.3 s",
+            "fließtext": "Der BMW M5 Competition (F90) kombiniert Luxus und Alltagstauglichkeit mit extremer Performance. Der Biturbo-V8 und das intelligente Allradsystem M xDrive ermöglichen beeindruckende Fahrleistungen unter allen Bedingungen. Trotz seiner Größe und Eleganz bleibt er ein echtes Performance-Fahrzeug mit Rennsportgenen."
+        },
+        {
+            "buttonid": 24,
+            "Marke": "BMW",
+            "titel": "BMW 507",
+            "Erscheinungsjahr": "1956",
+            "Leistung": "150 PS / 110 kW",
+            "0-100 Zeit": "ca. 11 s",
+            "fließtext": "Der BMW 507 gilt als eines der schönsten Automobile aller Zeiten. Der luxuriöse Roadster wurde in Handarbeit gefertigt und vereinte elegantes Design mit sportlicher Technik. Trotz seines hohen Preises und der geringen Stückzahl hat der 507 Kultstatus erreicht und steht heute für zeitlose Eleganz und klassische Ingenieurskunst."
+        },
+        {
+            "buttonid": 23,
+            "Marke": "BMW",
+            "titel": "BMW M4 CSL",
+            "Erscheinungsjahr": "2022",
+            "Leistung": "550 PS / 405 kW",
+            "0-100 Zeit": "3.7 s",
+            "fließtext": "Der BMW M4 CSL ist eine auf maximale Performance getrimmte Sonderedition, die den historischen CSL-Gedanken ('Coupé Sport Leichtbau') in die Moderne überträgt. Durch konsequenten Leichtbau, gesteigerte Leistung und Rennstrecken-Fokus bietet er ein puristisches Fahrerlebnis. Nur wenige Exemplare wurden produziert, was ihn besonders exklusiv macht."
         }
     ]
 }
