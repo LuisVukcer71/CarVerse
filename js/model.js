@@ -33,7 +33,7 @@ export function loadModel(scene, collisionObjects) {
     const loader = new GLTFLoader(loadingManager);
 
     loader.load(
-        "assets/MainV1_7.glb",
+        "assets/MainV1_8.glb",
         (gltf) => {
             const model = gltf.scene;
             scene.add(model);
