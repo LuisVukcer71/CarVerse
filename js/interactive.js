@@ -111,6 +111,9 @@ function updatePopupContent(carData) {
     } else if (marke === 'tesla') {
       logoSrc = 'assets/logos/tesla.png';
     }
+    else if (marke === 'bmw') {
+      logoSrc = 'assets/logos/bmw.png';
+    }
   }
 
   if (logoSrc) {
