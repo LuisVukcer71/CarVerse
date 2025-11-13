@@ -114,6 +114,10 @@ function updatePopupContent(carData) {
     else if (marke === 'bmw') {
       logoSrc = 'assets/logos/bmw.png';
     }
+    else if (marke === 'porsche') {
+      logoSrc = 'assets/logos/porsche.png';
+    }
+    
   }
 
   if (logoSrc) {

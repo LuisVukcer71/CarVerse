@@ -109,6 +109,61 @@
             "fließtext": "Das Tesla Model Y ist ein kompaktes Elektro-SUV, das viel Platz mit hoher Effizienz verbindet. Besonders in der Performance-Version bietet es sportliche Fahrleistungen trotz familientauglichem Konzept. Es gilt als eines der global erfolgreichsten Elektromodelle der letzten Jahre."
         },
         {
+    "buttonid": 13,
+    "Marke": "Porsche",
+    "titel": "2010 porsche 918 spyder",
+    "Erscheinungsjahr": "2010",
+    "Leistung": "887 PS / 652 kW",
+    "0-100 Zeit": "2.6 s",
+    "fließtext": "Der Porsche 918 Spyder ist ein High-Performance-Hybrid-Supersportwagen, der modernste Elektrotechnik mit einem kraftvollen V8-Motor kombiniert. Durch seinen Allradantrieb und die aktive Aerodynamik liefert er eine beeindruckende Beschleunigung und höchste Fahrstabilität."
+},
+{
+    "buttonid": 2,
+    "Marke": "Porsche",
+    "titel": "Porsche 963 LMDH",
+    "Erscheinungsjahr": "2023",
+    "Leistung": "≈ 680 PS / 500 kW",
+    "0-100 Zeit": "ca. 2.5 s",
+    "fließtext": "Der Porsche 963 LMDh ist ein Prototyp-Rennfahrzeug für die Langstrecken-WM und die IMSA-Serie. Dank Hybridantrieb, Carbon-Monocoque und modernster Aerodynamik tritt er in der Hypercar-Klasse an und setzt neue Maßstäbe im Motorsport."
+},
+{
+    "buttonid": 15,
+    "Marke": "Porsche",
+    "titel": "Porsche Taycan",
+    "Erscheinungsjahr": "2019",
+    "Leistung": "761 PS / 560 kW",
+    "0-100 Zeit": "2.8 s",
+    "fließtext": "Der Porsche Taycan ist Porsches erstes vollelektrisches Sportmodell und kombiniert sofortiges Drehmoment mit typischer Porsche-Fahrdynamik. Mit seinem innovativen 800-Volt-System sorgt er für besonders kurze Ladezeiten und beeindruckende Performance."
+},
+{
+    "buttonid": 16,
+    "Marke": "Porsche",
+    "titel": "Porsche Carerra GT 2006",
+    "Erscheinungsjahr": "2006",
+    "Leistung": "612 PS / 450 kW",
+    "0-100 Zeit": "3.9 s",
+    "fließtext": "Der Porsche Carrera GT ist ein legendärer Supersportwagen mit einem hochdrehenden V10-Saugmotor. Sein puristisches Konzept, das geringe Gewicht und die manuelle 6-Gang-Schaltung machen ihn zu einer Ikone unter Porsche-Enthusiasten."
+},
+{
+    "buttonid": 17,
+    "Marke": "Porsche",
+    "titel": "Porsche 911 Turbo S 2021",
+    "Erscheinungsjahr": "2021",
+    "Leistung": "650 PS / 478 kW",
+    "0-100 Zeit": "2.7 s",
+    "fließtext": "Der Porsche 911 Turbo S von 2021 bietet enorme Alltagstauglichkeit kombiniert mit extremen Fahrleistungen. Der Biturbo-Sechszylinderboxer und der Allradantrieb sorgen für perfekte Traktion und beeindruckende Beschleunigung."
+},
+{
+    "buttonid": 18,
+    "Marke": "Porsche",
+    "titel": "1995 911 Carrera Rs",
+    "Erscheinungsjahr": "1995",
+    "Leistung": "300 PS / 221 kW",
+    "0-100 Zeit": "ca. 5.0 s",
+    "fließtext": "Der Porsche 911 Carrera RS (993) ist eine besonders leichte und auf Performance ausgelegte Version des 911. Durch Gewichtsreduktion, straffere Fahrwerksabstimmung und gesteigerte Motorleistung bietet er ein besonders direktes Fahrerlebnis."
+}
+
+        {
             "buttonid": 20,
             "Marke": "BMW",
             "titel": "BMW i8",
