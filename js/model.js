@@ -8,24 +8,24 @@ export function loadModel(scene, collisionObjects) {
     const loadingScreen = document.getElementById("loading-screen");
     const loadingBar = document.getElementById('loading-bar');
     const loadingPercentage = document.getElementById('loading-percentage');
-    // loading manager
+    
+    // Loading Manager
     const loadingManager = new THREE.LoadingManager();
 
-    // fortschritt anzeigen
+    // Fortschritt anzeigen
     loadingManager.onProgress = (url, loaded, total) => {
         const progress = Math.round((loaded / total) * 100);
         loadingBar.style.width = `${progress}%`;
         loadingPercentage.textContent = `${progress}%`;
     };
 
-    // Wenn alles fertig ist:
+    // Wenn alles fertig ist
     loadingManager.onLoad = () => {
-        // kurze Verzögerung für smooth Übergang
         setTimeout(() => {
             loadingScreen.classList.add('fade-out');
             setTimeout(() => {
                 loadingScreen.style.display = 'none';
-                startButton.style.display = 'block'; // Zeige den Startbutton
+                startButton.style.display = 'block';
             }, 800);
         }, 500);
     };
@@ -38,26 +38,39 @@ export function loadModel(scene, collisionObjects) {
             const model = gltf.scene;
             scene.add(model);
 
-            // Alle Meshes durchlaufen und für Kollision vorbereiten
+            // Alle Meshes durchlaufen und optimieren
             model.traverse((child) => {
                 if (child.isMesh) {
                     // Doppelseitige Materialien für bessere Sichtbarkeit
                     child.material.side = THREE.DoubleSide;
+                    
+                    // Material-Verbesserungen für bessere Beleuchtung
+                    if (child.material) {
+                        // Falls das Material zu dunkel ist, leicht aufhellen
+                        if (child.material.color && 
+                            child.material.color.r < 0.1 && 
+                            child.material.color.g < 0.1 && 
+                            child.material.color.b < 0.1) {
+                            child.material.emissive = new THREE.Color(0x111111);
+                            child.material.emissiveIntensity = 0.3;
+                        }
+                        
+                        child.material.needsUpdate = true;
+                    }
 
                     // Mesh zu Kollisionsobjekten hinzufügen
                     collisionObjects.push(child);
                 }
             });
 
-            console.log("Modell erfolgreich geladen");
+            console.log("✅ Modell erfolgreich geladen und optimiert");
         },
         (progress) => {
-            // Ladefortschritt
             const percent = (progress.loaded / progress.total) * 100;
             console.log(`Lade Modell: ${percent.toFixed(0)}%`);
         },
         (error) => {
-            console.error("Fehler beim Laden des Modells:", error);
+            console.error("❌ Fehler beim Laden des Modells:", error);
         }
     );
 }
