@@ -1,4 +1,68 @@
 {
+    "porsche":
+    [
+        {
+            "id": 1,
+            "fließtext": "Ferdinand Porsche gründete 1931 ein Konstruktionsbüro, entwickelte später den Volkswagen Käfer und legte damit die Grundlage für die spätere Sportwagenmarke Porsche, die weltweit bekannt wurde."
+        },
+        {
+            "id": 2,
+            "fließtext": "Porsche begann nach dem Zweiten Weltkrieg mit dem 356, entwickelte anschließend den legendären 911 und wuchs kontinuierlich zu einem führenden Hersteller hochwertiger Sportwagen und Technologien."
+        },
+        {
+            "id": 3,
+            "fließtext": "Porsche investiert stark in Elektrifizierung, digitale Produkte und Batterieentwicklung, bewältigt zugleich herausfordernde Marktbedingungen und arbeitet weiterhin an profitabler Transformation für langfristiges globales Wachstum und Stabilität."
+        }
+    ],
+
+    "ferrari":
+    [
+        {
+            "id": 1,
+            "fließtext": "Enzo Ferrari gründete 1947 die Marke, nachdem er zuvor Rennfahrer gewesen war, und entwickelte sie rasch zu einem Symbol unvergleichlicher italienischer Ingenieurskunst, Motorsportleidenschaft und Exklusivität."
+        },
+        {
+            "id": 2,
+            "fließtext": "Ferrari entwickelte sich aus Rennsportwurzeln, gewann zahlreiche Titel, erweiterte später seine Straßenmodelle und blieb kontinuierlich eine weltweit führende Luxusmarke mit Identität, Tradition und technischer Innovation."
+        },
+                {
+            "id": 3,
+            "fließtext": "Ferrari erzielt weiterhin starke Gewinne, fokussiert sich auf limitierte Modelle, investiert in Elektrifizierung und stärkt seine Markenexklusivität trotz schwankender Weltmärkte und anspruchsvoller regulatorischer Anforderungen weltweit."
+        }
+    ],
+
+    "bmw":
+    [
+        {
+            "id": 1,
+            "fließtext": "BMW entstand 1916 aus Flugmotorenfirmen, entwickelte früh bedeutende Antriebstechnologien und etablierte sich anschließend als wichtiger deutscher Industriekonzern mit wachsender Kompetenz in Mobilität, Technik, und Premiumsegment."
+        },
+        {
+            "id": 2,
+            "fließtext": "BMW produzierte zunächst Flugmotoren, anschließend Motorräder und später Automobile, wuchs nach Kriegsende international und entwickelte sich zu einem prägenden Premiumhersteller mit Designanspruch und globaler Präsenz."
+        },
+        {
+            "id": 3,
+            "fließtext": "BMW steht 2025 unter Druck durch Zölle, investiert gleichzeitig stark in Elektromobilität, Software und effiziente Produktion, um langfristig Wettbewerbsfähigkeit, Profitabilität und globale Marktstärke sicherzustellen erfolgreich."
+        }
+    ],
+
+    "tesla":
+    [
+        {
+            "id": 1,
+            "fließtext": "Tesla wurde 2003 von Martin Eberhard und Marc Tarpenning gegründet, später stark geprägt von Elon Musk, der Finanzierung, Strategiewechsel und globale Expansion entscheidend vorantrieb weltweit."
+        },
+                {
+            "id": 2,
+            "fließtext": "Tesla entwickelte den Roadster, etablierte sich mit Model S und später Model 3 als EV-Pionier, baute Gigafactories weltweit und revolutionierte Produktion, Softwareintegration sowie Energiespeicherlösungen global."
+        },
+                {
+            "id": 3,
+            "fließtext": "Tesla erlebt 2025 rückläufige Gewinne, steigenden Wettbewerbsdruck, Preisanpassungen und Investitionsbedarf, stärkt jedoch Softwaregeschäft, Autonomieentwicklung und Effizienzprogramme zur Stabilisierung langfristiger Marktposition und Rentabilität im globalen Markt."
+        }
+    ],
+
     "cars": [
         {
             "buttonid": 1,
