@@ -25,7 +25,7 @@ export function initScene() {
   
   // Tone Mapping für bessere Beleuchtung
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.2;
+  renderer.toneMappingExposure = 1.15;
   
   document.body.appendChild(renderer.domElement);
   
@@ -38,7 +38,9 @@ export function initScene() {
 /**
  * Erstellt eine visuelle Markierung für Lichtquellen (Development Helper)
  */
-function createLightMarker(scene, position, color = 0xffff00, size = 0.5) {
+function createLightMarker(scene, position, color = 0xffff00, size = 0.5, debug = false) {
+  if (!debug) return; // Nur anzeigen wenn debug=true
+  
   const geometry = new THREE.SphereGeometry(size, 16, 16);
   const material = new THREE.MeshBasicMaterial({ 
     color: color,
@@ -52,113 +54,70 @@ function createLightMarker(scene, position, color = 0xffff00, size = 0.5) {
 }
 
 /**
- * Richtet die Beleuchtung der Szene ein (ohne Schatten)
+ * Optimierte Beleuchtung - gleichmäßig aus allen Richtungen
  */
 function setupLighting(scene) {
-  // === 1. AMBIENT LIGHT (Grundhelligkeit) ===
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-  scene.add(ambientLight);
-  // Kein Marker für Ambient (ist überall)
+  const DEBUG_LIGHTS = false; // Setze auf true zum Sehen der Lichtquellen
 
-  // === 2. HEMISPHERE LIGHT (Himmel/Boden) ===
-  const hemiLight = new THREE.HemisphereLight(0xffffff, 0x666666, 0.8);
+  // === 1. AMBIENT LIGHT (Grundhelligkeit überall) ===
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
+  scene.add(ambientLight);
+
+  // === 2. HEMISPHERE LIGHT (Himmel oben, Boden unten) ===
+  const hemiLight = new THREE.HemisphereLight(0xffffff, 0xaaaaaa, 0.9);
   hemiLight.position.set(0, 50, 0);
   scene.add(hemiLight);
-  createLightMarker(scene, hemiLight.position, 0x00ffff, 1); // Cyan Marker
+  createLightMarker(scene, hemiLight.position, 0x00ffff, 1, DEBUG_LIGHTS);
 
-  // === 3. DIRECTIONAL LIGHT (Hauptlicht von oben) ===
-  const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
-  dirLight.position.set(0, 100, 0);
-  scene.add(dirLight);
-  createLightMarker(scene, dirLight.position, 0xffff00, 1.5); // Gelber Marker
-
-  // === 4. HAUPT-POINT LIGHTS (Einer pro Wand) ===
+  // === 3. VIER DIRECTIONAL LIGHTS (Von oben in 4 Richtungen) ===
+  // Diese sorgen für gleichmäßige Ausleuchtung ohne Überbelichtung
   
-  // Vorne (z negativ)
-  const pointLight1 = new THREE.PointLight(0xffffff, 1.5, 120);
-  pointLight1.position.set(0, 20, -90);
+  const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.7);
+  dirLight1.position.set(50, 60, 50);
+  scene.add(dirLight1);
+  createLightMarker(scene, dirLight1.position, 0xff6b6b, 1, DEBUG_LIGHTS);
+
+  const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.7);
+  dirLight2.position.set(-50, 60, 50);
+  scene.add(dirLight2);
+  createLightMarker(scene, dirLight2.position, 0x4ecdc4, 1, DEBUG_LIGHTS);
+
+  const dirLight3 = new THREE.DirectionalLight(0xffffff, 0.7);
+  dirLight3.position.set(-50, 60, -50);
+  scene.add(dirLight3);
+  createLightMarker(scene, dirLight3.position, 0xffe66d, 1, DEBUG_LIGHTS);
+
+  const dirLight4 = new THREE.DirectionalLight(0xffffff, 0.7);
+  dirLight4.position.set(50, 60, -50);
+  scene.add(dirLight4);
+  createLightMarker(scene, dirLight4.position, 0x95e1d3, 1, DEBUG_LIGHTS);
+
+  // === 4. POINT LIGHTS AN DEN 4 WÄNDEN (Mittelhöhe für gleichmäßige Ausleuchtung) ===
+  
+  const pointLight1 = new THREE.PointLight(0xffffff, 1.2, 180);
+  pointLight1.position.set(0, 15, -95);
   scene.add(pointLight1);
-  createLightMarker(scene, pointLight1.position, 0xff0000, 1); // Rot
+  createLightMarker(scene, pointLight1.position, 0xff0000, 0.8, DEBUG_LIGHTS);
 
-  // Links (x negativ)
-  const pointLight2 = new THREE.PointLight(0xffffff, 1.5, 120);
-  pointLight2.position.set(-90, 20, 0);
+  const pointLight2 = new THREE.PointLight(0xffffff, 1.2, 180);
+  pointLight2.position.set(-95, 15, 0);
   scene.add(pointLight2);
-  createLightMarker(scene, pointLight2.position, 0x00ff00, 1); // Grün
+  createLightMarker(scene, pointLight2.position, 0x00ff00, 0.8, DEBUG_LIGHTS);
 
-  // Hinten (z positiv)
-  const pointLight3 = new THREE.PointLight(0xffffff, 1.5, 120);
-  pointLight3.position.set(0, 20, 90);
+  const pointLight3 = new THREE.PointLight(0xffffff, 1.2, 180);
+  pointLight3.position.set(0, 15, 95);
   scene.add(pointLight3);
-  createLightMarker(scene, pointLight3.position, 0x0000ff, 1); // Blau
+  createLightMarker(scene, pointLight3.position, 0x0000ff, 0.8, DEBUG_LIGHTS);
 
-  // Rechts (x positiv)
-  const pointLight4 = new THREE.PointLight(0xffffff, 1.5, 120);
-  pointLight4.position.set(90, 20, 0);
+  const pointLight4 = new THREE.PointLight(0xffffff, 1.2, 180);
+  pointLight4.position.set(95, 15, 0);
   scene.add(pointLight4);
-  createLightMarker(scene, pointLight4.position, 0xff00ff, 1); // Magenta
+  createLightMarker(scene, pointLight4.position, 0xff00ff, 0.8, DEBUG_LIGHTS);
 
-  // === 5. INNEN-LICHTER (Von Mitte nach außen) ===
-  // Diese beleuchten die Rückseiten der Autos
-  
-  const innerLight1 = new THREE.PointLight(0xffffff, 1.2, 100);
-  innerLight1.position.set(0, 15, -50);
-  scene.add(innerLight1);
-  createLightMarker(scene, innerLight1.position, 0xffa500, 0.8); // Orange
+  // === 5. MITTENLICHT (Schwach, nur zum Füllen) ===
+  const centerLight = new THREE.PointLight(0xffffff, 0.6, 160);
+  centerLight.position.set(0, 20, 0);
+  scene.add(centerLight);
+  createLightMarker(scene, centerLight.position, 0xffff00, 0.6, DEBUG_LIGHTS);
 
-  const innerLight2 = new THREE.PointLight(0xffffff, 1.2, 100);
-  innerLight2.position.set(-50, 15, 0);
-  scene.add(innerLight2);
-  createLightMarker(scene, innerLight2.position, 0xffa500, 0.8); // Orange
-
-  const innerLight3 = new THREE.PointLight(0xffffff, 1.2, 100);
-  innerLight3.position.set(0, 15, 50);
-  scene.add(innerLight3);
-  createLightMarker(scene, innerLight3.position, 0xffa500, 0.8); // Orange
-
-  const innerLight4 = new THREE.PointLight(0xffffff, 1.2, 100);
-  innerLight4.position.set(50, 15, 0);
-  scene.add(innerLight4);
-  createLightMarker(scene, innerLight4.position, 0xffa500, 0.8); // Orange
-
-  // === 6. ECKEN-LICHTER ===
-  const cornerLights = [
-    { x: -70, z: -70 },  // Vorne-Links
-    { x: 70, z: -70 },   // Vorne-Rechts
-    { x: -70, z: 70 },   // Hinten-Links
-    { x: 70, z: 70 }     // Hinten-Rechts
-  ];
-
-  cornerLights.forEach(pos => {
-    const fillLight = new THREE.PointLight(0xffffff, 0.8, 90);
-    fillLight.position.set(pos.x, 15, pos.z);
-    scene.add(fillLight);
-    createLightMarker(scene, fillLight.position, 0xffffff, 0.6); // Weiß
-  });
-
-  // === 7. ZENTRAL-SPOTLIGHT ===
-  const spotLight = new THREE.SpotLight(0xffffff, 1.5);
-  spotLight.position.set(0, 60, 0);
-  spotLight.angle = Math.PI / 3;
-  spotLight.penumbra = 0.2;
-  spotLight.decay = 1.5;
-  spotLight.distance = 200;
-  scene.add(spotLight);
-  scene.add(spotLight.target);
-  createLightMarker(scene, spotLight.position, 0xffff00, 1.2); // Gelb
-
-  // === 8. RIM LIGHTS (Konturenbeleuchtung) ===
-  const rimLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
-  rimLight1.position.set(-50, 80, -50);
-  scene.add(rimLight1);
-  createLightMarker(scene, rimLight1.position, 0xff69b4, 1); // Pink
-
-  const rimLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
-  rimLight2.position.set(50, 80, 50);
-  scene.add(rimLight2);
-  createLightMarker(scene, rimLight2.position, 0xff69b4, 1); // Pink
-
-  console.log("✅ Beleuchtung mit visuellen Markern geladen");
-  console.log("🔴 Rot = Vorne | 🟢 Grün = Links | 🔵 Blau = Hinten | 🟣 Magenta = Rechts");
-  console.log("🟠 Orange = Innen-Lichter | ⚪ Weiß = Ecken | 🟡 Gelb = Zentral | 🩷 Pink = Rim");
 }
