@@ -10,7 +10,7 @@ export function initScene() {
   
   // Kamera erstellen
   const camera = new THREE.PerspectiveCamera(
-    75, 
+    65, 
     window.innerWidth / window.innerHeight, 
     0.1, 
     1000
@@ -57,7 +57,7 @@ function createLightMarker(scene, position, color = 0xffff00, size = 0.5, debug 
  * Optimierte Beleuchtung - gleichmäßig aus allen Richtungen
  */
 function setupLighting(scene) {
-  const DEBUG_LIGHTS = false; // Setze auf true zum Sehen der Lichtquellen
+  const DEBUG_LIGHTS = false; // für debug kugeln
 
   // === 1. AMBIENT LIGHT (Grundhelligkeit überall) ===
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);

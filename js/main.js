@@ -3,6 +3,7 @@ import { initControls } from './controls.js';
 import { initUI } from './ui.js';
 import { loadModel } from './model.js';
 import { createMultipleButtons } from './interactive.js';
+import { createMinimap } from './minimap.js'; // NEU
 
 // Auto-Daten laden
 async function loadAutosData() {
@@ -69,10 +70,15 @@ async function init() {
 
     createMultipleButtons(scene, camera, controls, uiAPI.openPopup, buttonPositions, autosData);
 
+    // === MINIMAP ERSTELLEN (NEU) ===
+    const minimap = createMinimap(scene, camera);
+    console.log('✅ Minimap initialisiert');
+
     // === Render Loop ===
     function animate() {
         requestAnimationFrame(animate);
         movePlayer(controls, collisionObjects);
+        minimap.update(); // Minimap aktualisieren
         renderer.render(scene, camera);
     }
     animate();
