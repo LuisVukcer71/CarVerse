@@ -1,4 +1,60 @@
 {
+    "porsche": [
+        {
+            "id": 1,
+            "fließtext": "Ferdinand Porsche gründete 1931 ein Konstruktionsbüro, entwickelte später den Volkswagen Käfer und legte damit die Grundlage für die spätere Sportwagenmarke Porsche, die weltweit bekannt wurde."
+        },
+        {
+            "id": 2,
+            "fließtext": "Porsche begann nach dem Zweiten Weltkrieg mit dem 356, entwickelte anschließend den legendären 911 und wuchs kontinuierlich zu einem führenden Hersteller hochwertiger Sportwagen und Technologien."
+        },
+        {
+            "id": 3,
+            "fließtext": "Porsche investiert stark in Elektrifizierung, digitale Produkte und Batterieentwicklung, bewältigt zugleich herausfordernde Marktbedingungen und arbeitet weiterhin an profitabler Transformation für langfristiges globales Wachstum und Stabilität."
+        }
+    ],
+    "ferrari": [
+        {
+            "id": 1,
+            "fließtext": "Enzo Ferrari gründete 1947 die Marke, nachdem er zuvor Rennfahrer gewesen war, und entwickelte sie rasch zu einem Symbol unvergleichlicher italienischer Ingenieurskunst, Motorsportleidenschaft und Exklusivität."
+        },
+        {
+            "id": 2,
+            "fließtext": "Ferrari entwickelte sich aus Rennsportwurzeln, gewann zahlreiche Titel, erweiterte später seine Straßenmodelle und blieb kontinuierlich eine weltweit führende Luxusmarke mit Identität, Tradition und technischer Innovation."
+        },
+        {
+            "id": 3,
+            "fließtext": "Ferrari erzielt weiterhin starke Gewinne, fokussiert sich auf limitierte Modelle, investiert in Elektrifizierung und stärkt seine Markenexklusivität trotz schwankender Weltmärkte und anspruchsvoller regulatorischer Anforderungen weltweit."
+        }
+    ],
+    "bmw": [
+        {
+            "id": 1,
+            "fließtext": "BMW entstand 1916 aus Flugmotorenfirmen, entwickelte früh bedeutende Antriebstechnologien und etablierte sich anschließend als wichtiger deutscher Industriekonzern mit wachsender Kompetenz in Mobilität, Technik, und Premiumsegment."
+        },
+        {
+            "id": 2,
+            "fließtext": "BMW produzierte zunächst Flugmotoren, anschließend Motorräder und später Automobile, wuchs nach Kriegsende international und entwickelte sich zu einem prägenden Premiumhersteller mit Designanspruch und globaler Präsenz."
+        },
+        {
+            "id": 3,
+            "fließtext": "BMW steht 2025 unter Druck durch Zölle, investiert gleichzeitig stark in Elektromobilität, Software und effiziente Produktion, um langfristig Wettbewerbsfähigkeit, Profitabilität und globale Marktstärke sicherzustellen erfolgreich."
+        }
+    ],
+    "tesla": [
+        {
+            "id": 1,
+            "fließtext": "Tesla wurde 2003 von Martin Eberhard und Marc Tarpenning gegründet, später stark geprägt von Elon Musk, der Finanzierung, Strategiewechsel und globale Expansion entscheidend vorantrieb weltweit."
+        },
+        {
+            "id": 2,
+            "fließtext": "Tesla entwickelte den Roadster, etablierte sich mit Model S und später Model 3 als EV-Pionier, baute Gigafactories weltweit und revolutionierte Produktion, Softwareintegration sowie Energiespeicherlösungen global."
+        },
+        {
+            "id": 3,
+            "fließtext": "Tesla erlebt 2025 rückläufige Gewinne, steigenden Wettbewerbsdruck, Preisanpassungen und Investitionsbedarf, stärkt jedoch Softwaregeschäft, Autonomieentwicklung und Effizienzprogramme zur Stabilisierung langfristiger Marktposition und Rentabilität im globalen Markt."
+        }
+    ],
     "cars": [
         {
             "buttonid": 1,
@@ -7,7 +63,8 @@
             "Erscheinungsjahr": "2022",
             "Leistung": "725 PS / 533 kW",
             "0-100 Zeit": "3.3 s",
-            "fließtext": "Der Ferrari Purosangue ist Ferraris erstes serienmäßiges SUV und setzt neue Maßstäbe in Bezug auf Performance in diesem Fahrzeugsegment. Sein frei saugender V12-Motor sorgt für ein besonders natürliches Ansprechverhalten und einen charakteristischen Klang. Trotz seines höheren Gewichts bietet er die fahrdynamische Präzision eines klassischen Ferrari-Sportwagens."
+            "fließtext": "Der Ferrari Purosangue ist Ferraris erstes serienmäßiges SUV und setzt neue Maßstäbe in Bezug auf Performance in diesem Fahrzeugsegment. Sein frei saugender V12-Motor sorgt für ein besonders natürliches Ansprechverhalten und einen charakteristischen Klang. Trotz seines höheren Gewichts bietet er die fahrdynamische Präzision eines klassischen Ferrari-Sportwagens.",
+            "audioSrc": "assets/audios/buttonid_1_ferrari_purosangue.aac"
         },
         {
             "buttonid": 2,
@@ -16,7 +73,8 @@
             "Erscheinungsjahr": "1987",
             "Leistung": "478 PS / 352 kW",
             "0-100 Zeit": "4.1 s",
-            "fließtext": "Der Ferrari F40 gilt als einer der legendärsten Supersportwagen aller Zeiten und war der letzte Ferrari, den Enzo Ferrari persönlich absegnete. Sein Doppelturbo-V8, die radikale Gewichtsreduzierung und das kompromisslose Design machten ihn zum Inbegriff purer Fahrmaschine. Bis heute fasziniert er durch sein rohes, ungefiltertes Fahrerlebnis."
+            "fließtext": "Der Ferrari F40 gilt als einer der legendärsten Supersportwagen aller Zeiten und war der letzte Ferrari, den Enzo Ferrari persönlich absegnete. Sein Doppelturbo-V8, die radikale Gewichtsreduzierung und das kompromisslose Design machten ihn zum Inbegriff purer Fahrmaschine. Bis heute fasziniert er durch sein rohes, ungefiltertes Fahrerlebnis.",
+            "audioSrc": "assets/audios/buttonid_2_ferrari_f40.aac"
         },
         {
             "buttonid": 3,
@@ -25,7 +83,8 @@
             "Erscheinungsjahr": "2013",
             "Leistung": "963 PS / 708 kW",
             "0-100 Zeit": "2.4 s",
-            "fließtext": "Der LaFerrari kombiniert einen V12-Hochleistungsmotor mit einem Formel-1-inspirierten Hybridsystem und markiert damit einen technologischen Meilenstein der Marke. Durch seine aktive Aerodynamik und seinen elektrischen Power-Boost liefert er eine extreme Performance. Er gilt als einer der modernsten und exklusivsten Ferrari aller Zeiten."
+            "fließtext": "Der LaFerrari kombiniert einen V12-Hochleistungsmotor mit einem Formel-1-inspirierten Hybridsystem und markiert damit einen technologischen Meilenstein der Marke. Durch seine aktive Aerodynamik und seinen elektrischen Power-Boost liefert er eine extreme Performance. Er gilt als einer der modernsten und exklusivsten Ferrari aller Zeiten.",
+            "audioSrc": "assets/audios/buttonid_3_ferrari_laferrari.aac"
         },
         {
             "buttonid": 4,
@@ -34,7 +93,8 @@
             "Erscheinungsjahr": "1962",
             "Leistung": "300 PS / 221 kW",
             "0-100 Zeit": "ca. 5.4 s",
-            "fließtext": "Der Ferrari 250 GTO ist einer der seltensten und wertvollsten Oldtimer der Welt. Das Fahrzeug wurde für den Rennsport entwickelt und war in seiner Zeit extrem erfolgreich. Aufgrund seiner geringen Stückzahl und seines historischen Erfolgs erzielen Exemplare heute Rekordpreise bei Auktionen."
+            "fließtext": "Der Ferrari 250 GTO ist einer der seltensten und wertvollsten Oldtimer der Welt. Das Fahrzeug wurde für den Rennsport entwickelt und war in seiner Zeit extrem erfolgreich. Aufgrund seiner geringen Stückzahl und seines historischen Erfolgs erzielen Exemplare heute Rekordpreise bei Auktionen.",
+            "audioSrc": "assets/audios/buttonid_4_ferrari_250gto.aac"
         },
         {
             "buttonid": 5,
@@ -43,7 +103,8 @@
             "Erscheinungsjahr": "1984",
             "Leistung": "400 PS / 294 kW",
             "0-100 Zeit": "ca. 5.0 s",
-            "fließtext": "Der Ferrari 288 GTO war als Homologationsmodell für die Rennserie Gruppe B konzipiert. Sein turbogeladener V8 sorgte für beeindruckende Leistung und markierte einen Schritt hin zu moderneren Supersportwagen-Konzepten. Er gilt als direkter Vorgänger des späteren F40."
+            "fließtext": "Der Ferrari 288 GTO war als Homologationsmodell für die Rennserie Gruppe B konzipiert. Sein turbogeladener V8 sorgte für beeindruckende Leistung und markierte einen Schritt hin zu moderneren Supersportwagen-Konzepten. Er gilt als direkter Vorgänger des späteren F40.",
+            "audioSrc": "assets/audios/buttonid_5_ferrari_288gto.aac"
         },
         {
             "buttonid": 6,
@@ -52,7 +113,8 @@
             "Erscheinungsjahr": "2018",
             "Leistung": "ca. 1000 PS / 736 kW",
             "0-100 Zeit": "< 3 s",
-            "fließtext": "Der Ferrari SF71H war das Formel-1-Auto der Saison 2018 und eines der ersten Ferrari-Modelle mit Halo-Sicherheitsbügel. Er zeichnete sich durch eine sehr effiziente Aerodynamik und ein starkes Hybrid-Antriebssystem aus. Das Fahrzeug war konkurrenzfähig und kämpfte maßgeblich um den WM-Titel."
+            "fließtext": "Der Ferrari SF71H war das Formel-1-Auto der Saison 2018 und eines der ersten Ferrari-Modelle mit Halo-Sicherheitsbügel. Er zeichnete sich durch eine sehr effiziente Aerodynamik und ein starkes Hybrid-Antriebssystem aus. Das Fahrzeug war konkurrenzfähig und kämpfte maßgeblich um den WM-Titel.",
+            "audioSrc": "assets/audios/buttonid_6_ferrari_sf71h.aac"
         },
         {
             "buttonid": 7,
@@ -61,7 +123,8 @@
             "Erscheinungsjahr": "vorgestellt 2017",
             "Leistung": "über 1000 PS / ca. 736 kW",
             "0-100 Zeit": "1.9 s",
-            "fließtext": "Der neu angekündigte Tesla Roadster der zweiten Generation soll eines der schnellsten Serienfahrzeuge der Welt werden. Mit enormer Beschleunigung und hoher Reichweite will Tesla zeigen, dass Elektrofahrzeuge Supersportwagen übertreffen können. Die endgültige Serienproduktion steht jedoch noch aus."
+            "fließtext": "Der neu angekündigte Tesla Roadster der zweiten Generation soll eines der schnellsten Serienfahrzeuge der Welt werden. Mit enormer Beschleunigung und hoher Reichweite will Tesla zeigen, dass Elektrofahrzeuge Supersportwagen übertreffen können. Die endgültige Serienproduktion steht jedoch noch aus.",
+            "audioSrc": "assets/audios/buttonid_7_tesla_roadster2.aac"
         },
         {
             "buttonid": 8,
@@ -70,7 +133,8 @@
             "Erscheinungsjahr": "2008",
             "Leistung": "248 PS / 182 kW",
             "0-100 Zeit": "3.9 s",
-            "fließtext": "Der erste Tesla Roadster war das Fahrzeug, mit dem Tesla weltweit bekannt wurde. Er zeigte, dass Elektroautos sportlich, leistungsfähig und alltagstauglich sein können. Als frühes Elektro-Performance-Car hat er die Wahrnehmung von Elektromobilität nachhaltig verändert."
+            "fließtext": "Der erste Tesla Roadster war das Fahrzeug, mit dem Tesla weltweit bekannt wurde. Er zeigte, dass Elektroautos sportlich, leistungsfähig und alltagstauglich sein können. Als frühes Elektro-Performance-Car hat er die Wahrnehmung von Elektromobilität nachhaltig verändert.",
+            "audioSrc": "assets/audios/buttonid_8_tesla_roadster1.aac"
         },
         {
             "buttonid": 9,
@@ -79,7 +143,8 @@
             "Erscheinungsjahr": "2023",
             "Leistung": "ca. 845 PS / 621 kW",
             "0-100 Zeit": "2.6 s",
-            "fließtext": "Der Tesla Cybertruck polarisiert durch sein futuristisches, kantiges Edelstahl-Design. Er kombiniert hohe Geländetauglichkeit mit extremen Beschleunigungswerten und großer Reichweite. Sein Erscheinungsbild hat die Diskussion über Fahrzeugdesign weltweit neu entfacht."
+            "fließtext": "Der Tesla Cybertruck polarisiert durch sein futuristisches, kantiges Edelstahl-Design. Er kombiniert hohe Geländetauglichkeit mit extremen Beschleunigungswerten und großer Reichweite. Sein Erscheinungsbild hat die Diskussion über Fahrzeugdesign weltweit neu entfacht.",
+            "audioSrc": "assets/audios/buttonid_9_tesla_cybertruck.aac"
         },
         {
             "buttonid": 10,
@@ -88,7 +153,8 @@
             "Erscheinungsjahr": "2017",
             "Leistung": "450 PS / 331 kW",
             "0-100 Zeit": "3.3 s",
-            "fließtext": "Das Tesla Model 3 ist eines der meistverkauften Elektroautos weltweit und spielt eine zentrale Rolle in der globalen Elektrifizierung des Verkehrs. In der Performance-Variante bietet es eine beeindruckende Beschleunigung und ein minimalistisches, softwarezentriertes Innenraumkonzept. Sein Erfolg zeigt, dass Elektroautos im Massenmarkt angekommen sind."
+            "fließtext": "Das Tesla Model 3 ist eines der meistverkauften Elektroautos weltweit und spielt eine zentrale Rolle in der globalen Elektrifizierung des Verkehrs. In der Performance-Variante bietet es eine beeindruckende Beschleunigung und ein minimalistisches, softwarezentriertes Innenraumkonzept. Sein Erfolg zeigt, dass Elektroautos im Massenmarkt angekommen sind.",
+            "audioSrc": "assets/audios/buttonid_10_tesla_model3perf.aac"
         },
         {
             "buttonid": 11,
@@ -97,7 +163,8 @@
             "Erscheinungsjahr": "vorgestellt 2017",
             "Leistung": "über 1000 PS / ca. 736 kW",
             "0-100 Zeit": "1.9 s",
-            "fließtext": "Wie bereits erwähnt, soll der kommende Tesla Roadster die Grenzen der Elektro-Performance neu definieren. Seine versprochene Beschleunigung und Reichweite machen ihn zu einem der meist erwarteten Fahrzeuge der kommenden Jahre. Die tatsächliche Markteinführung bleibt jedoch noch abzuwarten."
+            "fließtext": "Wie bereits erwähnt, soll der kommende Tesla Roadster die Grenzen der Elektro-Performance neu definieren. Seine versprochene Beschleunigung und Reichweite machen ihn zu einem der meist erwarteten Fahrzeuge der kommenden Jahre. Die tatsächliche Markteinführung bleibt jedoch noch abzuwarten.",
+            "audioSrc": "assets/audios/buttonid_7_tesla_roadster2.aac"
         },
         {
             "buttonid": 12,
@@ -106,71 +173,68 @@
             "Erscheinungsjahr": "2020",
             "Leistung": "456 PS / 335 kW",
             "0-100 Zeit": "3.7 s",
-            "fließtext": "Das Tesla Model Y ist ein kompaktes Elektro-SUV, das viel Platz mit hoher Effizienz verbindet. Besonders in der Performance-Version bietet es sportliche Fahrleistungen trotz familientauglichem Konzept. Es gilt als eines der global erfolgreichsten Elektromodelle der letzten Jahre."
+            "fließtext": "Das Tesla Model Y ist ein kompaktes Elektro-SUV, das viel Platz mit hoher Effizienz verbindet. Besonders in der Performance-Version bietet es sportliche Fahrleistungen trotz familientauglichem Konzept. Es gilt als eines der global erfolgreichsten Elektromodelle der letzten Jahre.",
+            "audioSrc": "assets/audios/buttonid_12_tesla_modely.aac"
         },
         {
-    "buttonid": 13,
-    "Marke": "Porsche",
-    "titel": "2010 porsche 918 spyder",
-    "Erscheinungsjahr": "2010",
-    "Leistung": "887 PS / 652 kW",
-    "0-100 Zeit": "2.6 s",
-    "fließtext": "Der Porsche 918 Spyder ist ein High-Performance-Hybrid-Supersportwagen, der modernste Elektrotechnik mit einem kraftvollen V8-Motor kombiniert. Durch seinen Allradantrieb und die aktive Aerodynamik liefert er eine beeindruckende Beschleunigung und höchste Fahrstabilität."
-},
-{
-    "buttonid": 2,
-    "Marke": "Porsche",
-    "titel": "Porsche 963 LMDH",
-    "Erscheinungsjahr": "2023",
-    "Leistung": "≈ 680 PS / 500 kW",
-    "0-100 Zeit": "ca. 2.5 s",
-    "fließtext": "Der Porsche 963 LMDh ist ein Prototyp-Rennfahrzeug für die Langstrecken-WM und die IMSA-Serie. Dank Hybridantrieb, Carbon-Monocoque und modernster Aerodynamik tritt er in der Hypercar-Klasse an und setzt neue Maßstäbe im Motorsport."
-},
-{
-    "buttonid": 15,
-    "Marke": "Porsche",
-    "titel": "Porsche Taycan",
-    "Erscheinungsjahr": "2019",
-    "Leistung": "761 PS / 560 kW",
-    "0-100 Zeit": "2.8 s",
-    "fließtext": "Der Porsche Taycan ist Porsches erstes vollelektrisches Sportmodell und kombiniert sofortiges Drehmoment mit typischer Porsche-Fahrdynamik. Mit seinem innovativen 800-Volt-System sorgt er für besonders kurze Ladezeiten und beeindruckende Performance."
-},
-{
-    "buttonid": 16,
-    "Marke": "Porsche",
-    "titel": "Porsche Carerra GT 2006",
-    "Erscheinungsjahr": "2006",
-    "Leistung": "612 PS / 450 kW",
-    "0-100 Zeit": "3.9 s",
-    "fließtext": "Der Porsche Carrera GT ist ein legendärer Supersportwagen mit einem hochdrehenden V10-Saugmotor. Sein puristisches Konzept, das geringe Gewicht und die manuelle 6-Gang-Schaltung machen ihn zu einer Ikone unter Porsche-Enthusiasten."
-},
-{
-    "buttonid": 17,
-    "Marke": "Porsche",
-    "titel": "Porsche 911 Turbo S 2021",
-    "Erscheinungsjahr": "2021",
-    "Leistung": "650 PS / 478 kW",
-    "0-100 Zeit": "2.7 s",
-    "fließtext": "Der Porsche 911 Turbo S von 2021 bietet enorme Alltagstauglichkeit kombiniert mit extremen Fahrleistungen. Der Biturbo-Sechszylinderboxer und der Allradantrieb sorgen für perfekte Traktion und beeindruckende Beschleunigung."
-},
-{
-    "buttonid": 18,
-    "Marke": "Porsche",
-    "titel": "1995 911 Carrera Rs",
-    "Erscheinungsjahr": "1995",
-    "Leistung": "300 PS / 221 kW",
-    "0-100 Zeit": "ca. 5.0 s",
-    "fließtext": "Der Porsche 911 Carrera RS (993) ist eine besonders leichte und auf Performance ausgelegte Version des 911. Durch Gewichtsreduktion, straffere Fahrwerksabstimmung und gesteigerte Motorleistung bietet er ein besonders direktes Fahrerlebnis."
-}
-,
+            "buttonid": 13,
+            "Marke": "Porsche",
+            "titel": "Porsche 963 LMDH",
+            "Erscheinungsjahr": "2023",
+            "Leistung": "≈ 680 PS / 500 kW",
+            "0-100 Zeit": "ca. 2.5 s",
+            "fließtext": "Der Porsche 963 LMDh ist ein Prototyp-Rennfahrzeug für die Langstrecken-WM und die IMSA-Serie. Dank Hybridantrieb, Carbon-Monocoque und modernster Aerodynamik tritt er in der Hypercar-Klasse an und setzt neue Maßstäbe im Motorsport.",
+            "audioSrc": "assets/audios/buttonid_14_porsche_963lmdh.aac"
+        },
         {
-            "buttonid": 20,
-            "Marke": "BMW",
-            "titel": "BMW i8",
-            "Erscheinungsjahr": "2014",
-            "Leistung": "362 PS / 266 kW",
-            "0-100 Zeit": "4.4 s",
-            "fließtext": "Der BMW i8 war eines der ersten Plug-in-Hybrid-Sportwagen-Modelle seiner Zeit und verkörperte BMWs Vision von nachhaltiger Performance. Sein futuristisches Design, die Carbonfaser-Bauweise und der kombinierte Antrieb aus Elektro- und Dreizylinder-Turbomotor machten ihn zu einem technologischen Vorreiter. Auch heute gilt er als Symbol für die Verbindung von Effizienz und Sportlichkeit."
+            "buttonid": 14,
+            "Marke": "Porsche",
+            "titel": "2010 porsche 918 spyder",
+            "Erscheinungsjahr": "2010",
+            "Leistung": "887 PS / 652 kW",
+            "0-100 Zeit": "2.6 s",
+            "fließtext": "Der Porsche 918 Spyder ist ein High-Performance-Hybrid-Supersportwagen, der modernste Elektrotechnik mit einem kraftvollen V8-Motor kombiniert. Durch seinen Allradantrieb und die aktive Aerodynamik liefert er eine beeindruckende Beschleunigung und höchste Fahrstabilität.",
+            "audioSrc": "assets/audios/buttonid_13_porsche_918spyder.aac"
+        },
+        {
+            "buttonid": 15,
+            "Marke": "Porsche",
+            "titel": "Porsche Carerra GT 2006",
+            "Erscheinungsjahr": "2006",
+            "Leistung": "612 PS / 450 kW",
+            "0-100 Zeit": "3.9 s",
+            "fließtext": "Der Porsche Carrera GT ist ein legendärer Supersportwagen mit einem hochdrehenden V10-Saugmotor. Sein puristisches Konzept, das geringe Gewicht und die manuelle 6-Gang-Schaltung machen ihn zu einer Ikone unter Porsche-Enthusiasten.",
+            "audioSrc": "assets/audios/buttonid_16_porsche_carreragt.aac"
+        },
+        {
+            "buttonid": 16,
+            "Marke": "Porsche",
+            "titel": "Porsche Taycan",
+            "Erscheinungsjahr": "2019",
+            "Leistung": "761 PS / 560 kW",
+            "0-100 Zeit": "2.8 s",
+            "fließtext": "Der Porsche Taycan ist Porsches erstes vollelektrisches Sportmodell und kombiniert sofortiges Drehmoment mit typischer Porsche-Fahrdynamik. Mit seinem innovativen 800-Volt-System sorgt er für besonders kurze Ladezeiten und beeindruckende Performance.",
+            "audioSrc": "assets/audios/buttonid_15_porsche_taycan.aac"
+        },
+        {
+            "buttonid": 17,
+            "Marke": "Porsche",
+            "titel": "1995 911 Carrera Rs",
+            "Erscheinungsjahr": "1995",
+            "Leistung": "300 PS / 221 kW",
+            "0-100 Zeit": "ca. 5.0 s",
+            "fließtext": "Der Porsche 911 Carrera RS (993) ist eine besonders leichte und auf Performance ausgelegte Version des 911. Durch Gewichtsreduktion, straffere Fahrwerksabstimmung und gesteigerte Motorleistung bietet er ein besonders direktes Fahrerlebnis.",
+            "audioSrc": "assets/audios/buttonid_18_porsche_911carrerars993.aac"
+        },
+        {
+            "buttonid": 18,
+            "Marke": "Porsche",
+            "titel": "Porsche 911 Turbo S 2021",
+            "Erscheinungsjahr": "2021",
+            "Leistung": "650 PS / 478 kW",
+            "0-100 Zeit": "2.7 s",
+            "fließtext": "Der Porsche 911 Turbo S von 2021 bietet enorme Alltagstauglichkeit kombiniert mit extremen Fahrleistungen. Der Biturbo-Sechszylinderboxer und der Allradantrieb sorgen für perfekte Traktion und beeindruckende Beschleunigung.",
+            "audioSrc": "assets/audios/buttonid_17_porsche_911turbos.aac"
         },
         {
             "buttonid": 19,
@@ -179,16 +243,18 @@
             "Erscheinungsjahr": "1986",
             "Leistung": "200 PS / 147 kW",
             "0-100 Zeit": "6.7 s",
-            "fließtext": "Der BMW M3 E30 ist eine Legende des Automobilsports und der Ursprung der M3-Baureihe. Ursprünglich als Homologationsmodell für den Tourenwagensport entwickelt, überzeugte er mit präzisem Handling und charakteristischem Hochdrehzahl-Vierzylinder. Heute ist er ein gesuchter Klassiker und Inbegriff puristischer Fahrfreude."
+            "fließtext": "Der BMW M3 E30 ist eine Legende des Automobilsports und der Ursprung der M3-Baureihe. Ursprünglich als Homologationsmodell für den Tourenwagensport entwickelt, überzeugte er mit präzisem Handling und charakteristischem Hochdrehzahl-Vierzylinder. Heute ist er ein gesuchter Klassiker und Inbegriff puristischer Fahrfreude.",
+            "audioSrc": "assets/audios/buttonid_19_bmw_m3e30.aac"
         },
         {
-            "buttonid": 22,
+            "buttonid": 20,
             "Marke": "BMW",
-            "titel": "BMW M3 E36 Coupé",
-            "Erscheinungsjahr": "1992",
-            "Leistung": "286 PS / 210 kW",
-            "0-100 Zeit": "5.5 s",
-            "fließtext": "Mit dem M3 E36 führte BMW den Reihensechszylinder in die M3-Baureihe ein und schuf damit eine neue Generation von Performance-Coupés. Der E36 bot mehr Komfort und Alltagstauglichkeit, ohne den sportlichen Anspruch zu verlieren. Besonders sein geschmeidiger Motorlauf und die präzise Fahrdynamik machten ihn zum Favoriten vieler Enthusiasten."
+            "titel": "BMW i8",
+            "Erscheinungsjahr": "2014",
+            "Leistung": "362 PS / 266 kW",
+            "0-100 Zeit": "4.4 s",
+            "fließtext": "Der BMW i8 war eines der ersten Plug-in-Hybrid-Sportwagen-Modelle seiner Zeit und verkörperte BMWs Vision von nachhaltiger Performance. Sein futuristisches Design, die Carbonfaser-Bauweise und der kombinierte Antrieb aus Elektro- und Dreizylinder-Turbomotor machten ihn zu einem technologischen Vorreiter. Auch heute gilt er als Symbol für die Verbindung von Effizienz und Sportlichkeit.",
+            "audioSrc": "assets/audios/buttonid_20_bmw_i8.aac"
         },
         {
             "buttonid": 21,
@@ -197,16 +263,18 @@
             "Erscheinungsjahr": "2018",
             "Leistung": "625 PS / 460 kW",
             "0-100 Zeit": "3.3 s",
-            "fließtext": "Der BMW M5 Competition (F90) kombiniert Luxus und Alltagstauglichkeit mit extremer Performance. Der Biturbo-V8 und das intelligente Allradsystem M xDrive ermöglichen beeindruckende Fahrleistungen unter allen Bedingungen. Trotz seiner Größe und Eleganz bleibt er ein echtes Performance-Fahrzeug mit Rennsportgenen."
+            "fließtext": "Der BMW M5 Competition (F90) kombiniert Luxus und Alltagstauglichkeit mit extremer Performance. Der Biturbo-V8 und das intelligente Allradsystem M xDrive ermöglichen beeindruckende Fahrleistungen unter allen Bedingungen. Trotz seiner Größe und Eleganz bleibt er ein echtes Performance-Fahrzeug mit Rennsportgenen.",
+            "audioSrc": "assets/audios/buttonid_21_bmw_m5comp.aac"
         },
         {
-            "buttonid": 24,
+            "buttonid": 22,
             "Marke": "BMW",
-            "titel": "BMW 507",
-            "Erscheinungsjahr": "1956",
-            "Leistung": "150 PS / 110 kW",
-            "0-100 Zeit": "ca. 11 s",
-            "fließtext": "Der BMW 507 gilt als eines der schönsten Automobile aller Zeiten. Der luxuriöse Roadster wurde in Handarbeit gefertigt und vereinte elegantes Design mit sportlicher Technik. Trotz seines hohen Preises und der geringen Stückzahl hat der 507 Kultstatus erreicht und steht heute für zeitlose Eleganz und klassische Ingenieurskunst."
+            "titel": "BMW M3 E36 Coupé",
+            "Erscheinungsjahr": "1992",
+            "Leistung": "286 PS / 210 kW",
+            "0-100 Zeit": "5.5 s",
+            "fließtext": "Mit dem M3 E36 führte BMW den Reihensechszylinder in die M3-Baureihe ein und schuf damit eine neue Generation von Performance-Coupés. Der E36 bot mehr Komfort und Alltagstauglichkeit, ohne den sportlichen Anspruch zu verlieren. Besonders sein geschmeidiger Motorlauf und die präzise Fahrdynamik machten ihn zum Favoriten vieler Enthusiasten.",
+            "audioSrc": "assets/audios/buttonid_22_bmw_m3e36.aac"
         },
         {
             "buttonid": 23,
@@ -215,7 +283,18 @@
             "Erscheinungsjahr": "2022",
             "Leistung": "550 PS / 405 kW",
             "0-100 Zeit": "3.7 s",
-            "fließtext": "Der BMW M4 CSL ist eine auf maximale Performance getrimmte Sonderedition, die den historischen CSL-Gedanken ('Coupé Sport Leichtbau') in die Moderne überträgt. Durch konsequenten Leichtbau, gesteigerte Leistung und Rennstrecken-Fokus bietet er ein puristisches Fahrerlebnis. Nur wenige Exemplare wurden produziert, was ihn besonders exklusiv macht."
+            "fließtext": "Der BMW M4 CSL ist eine auf maximale Performance getrimmte Sonderedition, die den historischen CSL-Gedanken ('Coupé Sport Leichtbau') in die Moderne überträgt. Durch konsequenten Leichtbau, gesteigerte Leistung und Rennstrecken-Fokus bietet er ein puristisches Fahrerlebnis. Nur wenige Exemplare wurden produziert, was ihn besonders exklusiv macht.",
+            "audioSrc": "assets/audios/buttonid_23_bmw_m4csl.aac"
+        },
+        {
+            "buttonid": 24,
+            "Marke": "BMW",
+            "titel": "BMW 507",
+            "Erscheinungsjahr": "1956",
+            "Leistung": "150 PS / 110 kW",
+            "0-100 Zeit": "ca. 11 s",
+            "fließtext": "Der BMW 507 gilt als eines der schönsten Automobile aller Zeiten. Der luxuriöse Roadster wurde in Handarbeit gefertigt und vereinte elegantes Design mit sportlicher Technik. Trotz seines hohen Preises und der geringen Stückzahl hat der 507 Kultstatus erreicht und steht heute für zeitlose Eleganz und klassische Ingenieurskunst.",
+            "audioSrc": "assets/audios/buttonid_24_bmw_507.aac"
         }
     ]
 }
