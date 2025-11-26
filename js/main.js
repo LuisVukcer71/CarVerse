@@ -3,6 +3,7 @@ import { initControls } from './controls.js';
 import { initUI } from './ui.js';
 import { loadModel } from './model.js';
 import { createMultipleButtons } from './interactive.js';
+import { createMinimap } from './minimap.js'; // NEU
 
 // Auto-Daten laden
 async function loadAutosData() {
@@ -51,12 +52,12 @@ async function init() {
         { x: -67, y: 1, z: 13, buttonid: 12 },
 
         //Buttons Hinten
-        { x: -13, y: 1, z: 110, buttonid: 13 },
-        { x: 13, y: 1, z: 110, buttonid: 14 },
-        { x: -13, y: 1, z: 88.5, buttonid: 15 },
-        { x: 13, y: 1, z: 88.5, buttonid: 16 },
-        { x: -13, y: 1, z: 67, buttonid: 17 },
-        { x: 13, y: 1, z: 67, buttonid: 18 },
+        { x: 13, y: 1, z: 110, buttonid: 13 },
+        { x: -13, y: 1, z: 110, buttonid: 14 },
+        { x: 13, y: 1, z: 88.5, buttonid: 15 },
+        { x: -13, y: 1, z: 88.5, buttonid: 16 },
+        { x: 13, y: 1, z: 67, buttonid: 17 },
+        { x: -13, y: 1, z: 67, buttonid: 18 },
 
         //Buttons Rechts
         { x: 110.5, y: 1, z: 13, buttonid: 19 },
@@ -69,10 +70,15 @@ async function init() {
 
     createMultipleButtons(scene, camera, controls, uiAPI.openPopup, buttonPositions, autosData);
 
+    // === MINIMAP ERSTELLEN (NEU) ===
+    const minimap = createMinimap(scene, camera);
+    console.log('✅ Minimap initialisiert');
+
     // === Render Loop ===
     function animate() {
         requestAnimationFrame(animate);
         movePlayer(controls, collisionObjects);
+        minimap.update(); // Minimap aktualisieren
         renderer.render(scene, camera);
     }
     animate();
