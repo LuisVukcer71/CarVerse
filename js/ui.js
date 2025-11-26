@@ -12,6 +12,7 @@ export function initUI(controls) {
     const closePopUpBtn = document.getElementById("closepopup");
     const volumeSlider = document.getElementById("volumeSlider");
     const speedSlider = document.getElementById("speedSlider");
+    const carAudio = document.querySelector('#carAudio');
 
     let menuOpen = false;
     let popupOpen = false;
@@ -57,6 +58,13 @@ export function initUI(controls) {
         if (!popupOpen) return;
         popupOpen = false;
         popup.classList.remove("show");
+
+        // Audio stoppen
+        if (carAudio) {
+            carAudio.pause();
+            carAudio.currentTime = 0;
+        }
+
         controls.lock();
         document.body.style.cursor = "none";
         if (!crosshairOn) {
@@ -104,7 +112,11 @@ export function initUI(controls) {
     volumeSlider.addEventListener("input", () => {
         const vol = parseFloat(volumeSlider.value);
         console.log("Lautstärke:", vol);
-        // Hier kann Audio-Logik hinzugefügt werden
+
+        // car audio lautstärke anpassen
+        if (carAudio) {
+            carAudio.volume = vol;
+        }
     });
 
     // Speed Slider
