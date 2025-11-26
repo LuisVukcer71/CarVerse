@@ -1,28 +1,13 @@
 import * as THREE from "https://esm.sh/three@0.160.0";
 
-/**
- * Erstellt eine Minimap mit Spielerposition
- */
+
 export function createMinimap(scene, camera) {
-  // Minimap-Container im DOM erstellen
+  // Minimap-Container 
   const minimapContainer = document.createElement('div');
   minimapContainer.id = 'minimap';
-  minimapContainer.style.cssText = `
-    position: fixed;
-    bottom: 60px;
-    right: 20px;
-    width: 200px;
-    height: 200px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  `;
   document.body.appendChild(minimapContainer);
 
-  // Canvas für Minimap erstellen
+  // Canvas für Minimap 
   const canvas = document.createElement('canvas');
   canvas.width = 200;
   canvas.height = 200;
@@ -35,7 +20,7 @@ export function createMinimap(scene, camera) {
   const MUSEUM_SIZE = 260;
   const MUSEUM_HALF = MUSEUM_SIZE / 2;
 
-  // Marken-Logos laden
+  // Markenlogos 
   const logos = {
     ferrari: new Image(),
     tesla: new Image(),
@@ -58,18 +43,14 @@ export function createMinimap(scene, camera) {
     };
   });
 
-  /**
-   * Konvertiert Welt-Koordinaten zu Minimap-Pixel-Koordinaten
-   */
+
   function worldToMinimap(worldX, worldZ) {
     const x = ((worldX + MUSEUM_HALF) / MUSEUM_SIZE) * canvas.width;
     const y = ((worldZ + MUSEUM_HALF) / MUSEUM_SIZE) * canvas.height;
     return { x, y };
   }
 
-  /**
-   * Zeichnet ein Logo in einem Raum
-   */
+
   function drawLogo(logo, centerX, centerZ, size = 25) {
     if (!logo.complete) return;
     
@@ -82,19 +63,16 @@ export function createMinimap(scene, camera) {
     ctx.restore();
   }
 
-  /**
-   * Zeichnet einen Standort-Punkt mit gerichtetem Lichtkegel (Google Maps Style)
-   */
+
   function drawLocationDot(x, y, rotation, size = 10) {
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(rotation);
 
-    // === Lichtkegel (nach vorne gerichtet) ===
+
     const coneLength = 20;
     const coneWidth = 25;
     
-    // Gradient für Lichtkegel
     const gradient = ctx.createRadialGradient(0, 0, 0, 0, -coneLength/2, coneLength);
     gradient.addColorStop(0, 'rgba(66, 133, 244, 0.3)');
     gradient.addColorStop(0.5, 'rgba(66, 133, 244, 0.15)');
@@ -108,19 +86,17 @@ export function createMinimap(scene, camera) {
     ctx.closePath();
     ctx.fill();
 
-    // === Äußerer Kreis (hellblau, transparent) ===
     ctx.fillStyle = 'rgba(66, 133, 244, 0.2)';
     ctx.beginPath();
     ctx.arc(0, 0, size + 4, 0, Math.PI * 2);
     ctx.fill();
 
-    // === Hauptpunkt (blau) ===
+
     ctx.fillStyle = '#4285F4';
     ctx.beginPath();
     ctx.arc(0, 0, size, 0, Math.PI * 2);
     ctx.fill();
 
-    // === Weiße Umrandung ===
     ctx.strokeStyle = '#ffffff';
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -129,18 +105,15 @@ export function createMinimap(scene, camera) {
     ctx.restore();
   }
 
-  /**
-   * Zeichnet die Minimap
-   */
+
   function drawMinimap() {
     // Canvas leeren
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // === Hintergrund ===
+    // Hintergrund
     ctx.fillStyle = '#1a1a1a';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // === Wände zeichnen (Kreuz-Layout) ===
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
     ctx.lineWidth = 2;
 
@@ -154,7 +127,7 @@ export function createMinimap(scene, camera) {
     ctx.closePath();
     ctx.stroke();
 
-    // === OBEN - Ferrari Raum ===
+    // Ferrari
     const topRoom = worldToMinimap(-40, -125);
     const topRoom2 = worldToMinimap(40, -125);
     const topRoom3 = worldToMinimap(40, -50);
@@ -177,7 +150,7 @@ export function createMinimap(scene, camera) {
     ctx.lineTo(...Object.values(worldToMinimap(7, -28)));
     ctx.stroke();
 
-    // === UNTEN - Porsche Raum ===
+    // Porsche
     const bottomRoom = worldToMinimap(-40, 50);
     const bottomRoom2 = worldToMinimap(40, 50);
     const bottomRoom3 = worldToMinimap(40, 125);
@@ -200,7 +173,7 @@ export function createMinimap(scene, camera) {
     ctx.lineTo(...Object.values(worldToMinimap(7, 50)));
     ctx.stroke();
 
-    // === LINKS - Tesla Raum ===
+    // Tesla
     const leftRoom = worldToMinimap(-125, -40);
     const leftRoom2 = worldToMinimap(-125, 40);
     const leftRoom3 = worldToMinimap(-50, 40);
@@ -223,7 +196,7 @@ export function createMinimap(scene, camera) {
     ctx.lineTo(...Object.values(worldToMinimap(-28, 7)));
     ctx.stroke();
 
-    // === RECHTS - BMW Raum ===
+    // BMW
     const rightRoom = worldToMinimap(50, -40);
     const rightRoom2 = worldToMinimap(50, 40);
     const rightRoom3 = worldToMinimap(125, 40);
@@ -252,7 +225,7 @@ export function createMinimap(scene, camera) {
     drawLogo(logos.tesla, -87.5, 0, 30);
     drawLogo(logos.bmw, 87.5, 0, 30);
 
-    // === Standort-Punkt für Spieler (Google Maps Style) ===
+    // Standort
     const playerPos = worldToMinimap(camera.position.x, camera.position.z);
     
     // Blickrichtung berechnen
@@ -260,10 +233,10 @@ export function createMinimap(scene, camera) {
     camera.getWorldDirection(forward);
     const angle = Math.atan2(forward.z, forward.x) + Math.PI / 2;
 
-    // Standort-Punkt mit Lichtkegel zeichnen
+  
     drawLocationDot(playerPos.x, playerPos.y, angle, 8);
 
-    // === Koordinaten anzeigen ===
+    // Koordinaaten
     ctx.font = '9px monospace';
     ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
     ctx.textAlign = 'left';
@@ -272,9 +245,7 @@ export function createMinimap(scene, camera) {
     ctx.fillText(`Z: ${camera.position.z.toFixed(1)}`, canvas.width - 5, canvas.height - 10);
   }
 
-  /**
-   * Update-Funktion für Render-Loop
-   */
+
   function updateMinimap() {
     drawMinimap();
   }

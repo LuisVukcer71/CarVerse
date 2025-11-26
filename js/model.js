@@ -110,7 +110,7 @@ export function loadModel(scene, collisionObjects) {
                                 child.material.metalness = Math.min(child.material.metalness, 0.1);
                             }
                             if (child.material.roughness !== undefined) {
-                                child.material.roughness = Math.max(child.material.roughness, 0.4);
+                                child.material.roughness = Math.max(child.material.roughness, 0.2);
                             }
                         }
 
@@ -122,13 +122,6 @@ export function loadModel(scene, collisionObjects) {
                 }
             });
 
-            console.log("✅ Modell erfolgreich geladen und optimiert");
-            console.log("🎨 Material-Philosophie:");
-            console.log("  • Originaleffekte bewahrt - Nur schwarz anfassen");
-            console.log("  • Dunkel (<15%): Emissive +0.4");
-            console.log("  • Sehr dunkel (15-25%): Emissive +0.2");
-            console.log("  • Rot-Materialien: Metalness ≤0.4, Roughness ≥0.5 (matter)");
-            console.log("  • Boden/Wände: Glanz reduziert, Roughness erhöht");
         },
         (progress) => {
             const percent = (progress.loaded / progress.total) * 100;
