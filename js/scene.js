@@ -51,7 +51,7 @@ function createLightMarker(scene, position, color = 0xffff00, size = 0.5, debug 
 
 
 function setupLighting(scene) {
-  const lichtkugeln = true; // für debug kugeln
+  const lichtkugeln = false; // für debug kugeln
 
   // Grundhelligkeit
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);

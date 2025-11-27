@@ -16,7 +16,7 @@ export function createMinimap(scene, camera) {
   
   const ctx = canvas.getContext('2d');
 
-  // Museum-Dimensionen erweitert (mehr Raum um die Buttons herum)
+  // Museum-Dimensionen 
   const MUSEUM_SIZE = 260;
   const MUSEUM_HALF = MUSEUM_SIZE / 2;
 

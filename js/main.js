@@ -52,11 +52,11 @@ async function init() {
         { x: -67, y: 1, z: 13, buttonid: 12 },
 
         //Buttons Hinten
-        { x: 13, y: 1, z: 110, buttonid: 13 },
+        { x: 12.5, y: 1, z: 110, buttonid: 13 },
         { x: -13, y: 1, z: 110, buttonid: 14 },
-        { x: 13, y: 1, z: 88.5, buttonid: 15 },
+        { x: 12.5, y: 1, z: 88.5, buttonid: 15 },
         { x: -13, y: 1, z: 88.5, buttonid: 16 },
-        { x: 13, y: 1, z: 67, buttonid: 17 },
+        { x: 12.5, y: 1, z: 67, buttonid: 17 },
         { x: -13, y: 1, z: 67, buttonid: 18 },
 
         //Buttons Rechts
