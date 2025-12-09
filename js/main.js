@@ -3,7 +3,9 @@ import { initControls } from './controls.js';
 import { initUI } from './ui.js';
 import { loadModel } from './model.js';
 import { createMultipleButtons } from './interactive.js';
-import { createMinimap } from './minimap.js'; // NEU
+import { createMinimap } from './minimap.js'; 
+import { createTVs } from './tv.js';
+
 
 // Auto-Daten laden
 async function loadAutosData() {
@@ -65,20 +67,30 @@ async function init() {
         { x: 89.5, y: 1, z: 13, buttonid: 21 },
         { x: 89.5, y: 1, z: -13, buttonid: 22 },
         { x: 68, y: 1, z: 13, buttonid: 23 },
-        { x: 68, y: 1, z: -13, buttonid: 24 }
+        { x: 68, y: 1, z: -13, buttonid: 24 },
+
+
+        //Buttons Marken
+
+        //Buttons Vorne
+        { x: 110.5, y: 1, z: 13, buttonid: 25 }
     ];
 
     createMultipleButtons(scene, camera, controls, uiAPI.openPopup, buttonPositions, autosData);
 
-    // === MINIMAP ERSTELLEN (NEU) ===
+    // === MINIMAP ===
     const minimap = createMinimap(scene, camera);
-    console.log('✅ Minimap initialisiert');
+    console.log('Minimap initialisiert');
+
+    const tvSystem = createTVs(scene, camera);
+    console.log('TV-System initialisiert');
 
     // === Render Loop ===
     function animate() {
         requestAnimationFrame(animate);
         movePlayer(controls, collisionObjects);
-        minimap.update(); // Minimap aktualisieren
+        minimap.update(); 
+        tvSystem.update();
         renderer.render(scene, camera);
     }
     animate();
