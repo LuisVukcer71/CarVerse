@@ -13,6 +13,8 @@ export function initUI(controls) {
     const volumeSlider = document.getElementById("volumeSlider");
     const speedSlider = document.getElementById("speedSlider");
     const carAudio = document.querySelector('#carAudio');
+    const backgroundAudio = document.querySelector('#backgroundAudio');
+    const volumeSlider2 = document.getElementById("volumeSlider2");
 
     let menuOpen = false;
     let popupOpen = false;
@@ -80,9 +82,8 @@ export function initUI(controls) {
         controls.lock();
         crosshair.style.display = "block";
         crosshairOn = true;
-        let audio = document.getElementById("backroundMusic");
-        audio.volume = 0.2;
-        audio.play();
+        backgroundAudio.volume = parseFloat(volumeSlider2.value)/20;
+        backgroundAudio.play();
     });
 
     // PointerLock Events
@@ -119,6 +120,16 @@ export function initUI(controls) {
         // car audio lautstärke anpassen
         if (carAudio) {
             carAudio.volume = vol;
+        }
+    });
+
+    volumeSlider2.addEventListener("input", () => {
+        const vol = parseFloat(volumeSlider2.value)/20;
+        console.log("Lautstärke:", vol);
+
+        // car audio lautstärke anpassen
+        if (backgroundAudio) {
+            backgroundAudio.volume = vol;
         }
     });
 

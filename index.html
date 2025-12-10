@@ -43,7 +43,7 @@
     </div>
 
     <button id="startBtn">Klicken zum Starten</button>
-    <audio id="backroundMusic" src="assets/music/BackroundMusic.wav" loop></audio>
+    <audio id="backgroundAudio" src="./assets/music/BackgroundMusic.wav" loop></audio>
 
     <!-- Footer -->
     <footer class="bg-dark text-center text-secondary py-2 fixed-bottom">
@@ -56,13 +56,18 @@
         <h2>Einstellungen</h2>
 
         <div class="slider-container">
-            <label for="volumeSlider">Lautstärke</label><br />
-            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" />
+            <label for="volumeSlider">Lautstärke - Stimme</label><br />
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5" />
+        </div>
+
+        <div class="slider-container">
+            <label for="volumeSlider2">Lautstärke - Hintergrundmusik</label><br />
+            <input type="range" id="volumeSlider2" min="0" max="1" step="0.01" value="0.5" />
         </div>
 
         <div class="slider-container">
             <label for="speedSlider">Geschwindigkeit</label><br />
-            <input type="range" id="speedSlider" min="0.1" max="1" step="0.05" value="0.4" />
+            <input type="range" id="speedSlider" min="0.1" max="1" step="0.05" value="0.5" />
         </div>
 
         <hr style="margin: 20px 0; opacity: 0.3;" />

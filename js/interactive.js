@@ -27,46 +27,6 @@ function createTextTexture(text, width = 512, height = 256) {
     return texture;
 }
 
-/**
- * Erstellt interaktive 3D-Buttons in der Szene
- */
-export function createInteractiveButton(scene, camera, controls, openPopupCallback, buttonText = "KLICK MICH") {
-    // Button Geometrie und Material mit Text-Texture
-    const buttonGeometry = new THREE.BoxGeometry(2, 1, 0.2);
-    const textTexture = createTextTexture(buttonText);
-
-    const buttonMaterial = new THREE.MeshStandardMaterial({
-        map: textTexture,
-        emissive: 0xff0000,
-        emissiveIntensity: 0.2
-    });
-
-    const button3D = new THREE.Mesh(buttonGeometry, buttonMaterial);
-    button3D.position.set(0, 4, -129);
-    button3D.userData.isInteractive = true; // Marker für interaktive Objekte
-    scene.add(button3D);
-
-    // Raycaster für Interaktion
-    const interactionRaycaster = new THREE.Raycaster();
-    const centerPoint = new THREE.Vector2(0, 0);
-
-    // Click-Handler
-    document.addEventListener('click', () => {
-        if (!controls.isLocked) return;
-
-        // Raycasting vom Kamera-Zentrum
-        interactionRaycaster.setFromCamera(centerPoint, camera);
-        const intersects = interactionRaycaster.intersectObject(button3D);
-
-        if (intersects.length > 0) {
-            // Nur wenn Button getroffen wurde: Popup öffnen
-            openPopupCallback();
-            handleButtonClick(button3D, buttonMaterial, intersects[0].distance);
-        }
-    });
-
-    return button3D;
-}
 
 /**
  * Behandelt Button-Klicks mit visuellem Feedback
@@ -89,7 +49,7 @@ function handleButtonClick(button, material, distance, buttonid, carData) {
 }
 
 /**
- * Aktualisiert den Popup-Inhalt mit Auto-Daten
+ * Aktualisiert den Popup-Inhalt mit Auto-Daten oder Marken-Infos
  */
 function updatePopupContent(carData) {
     // Popup-Elemente holen
@@ -97,6 +57,7 @@ function updatePopupContent(carData) {
     const popupContent = document.getElementById('inhalt1');
     const carAudio = document.querySelector('#carAudio');
     const audioPlayBtn = document.querySelector('#audioPlayBtn');
+    const backgroundAudio = document.querySelector('#backgroundAudio');
 
     if (!carData) {
         popupTitle.textContent = 'Keine Daten';
@@ -104,6 +65,9 @@ function updatePopupContent(carData) {
         audioPlayBtn.style.display = 'none';
         return;
     }
+
+    // Prüfen ob es sich um Marken-Infos handelt (kein 'titel' Feld)
+    const isMarkenInfo = !carData.Leistung;
 
     // Titel mit Logo setzen
     let logoSrc = '';
@@ -120,42 +84,65 @@ function updatePopupContent(carData) {
         else if (marke === 'porsche') {
             logoSrc = 'assets/logos/porsche.png';
         }
-
     }
 
-    if (logoSrc) {
-        popupTitle.innerHTML = `<img src="${logoSrc}" alt="${carData.Marke} Logo" class="popup-logo"><br>${carData.titel || 'Unbekanntes Fahrzeug'}`;
+    // Titel setzen - unterschiedlich für Marken-Info vs. Auto-Info
+    if (isMarkenInfo) {
+        // Nur Markenname für Marken-Infos
+        if (logoSrc) {
+            popupTitle.innerHTML = `<img src="${logoSrc}" alt="${carData.Marke} Logo" class="popup-logo">`;
+        } else {
+            popupTitle.textContent = carData.Marke || 'Markeninformation';
+        }
     } else {
-        popupTitle.textContent = carData.titel || 'Unbekanntes Fahrzeug';
+        // Marke + Modellname für Auto-Infos
+        if (logoSrc) {
+            popupTitle.innerHTML = `<img src="${logoSrc}" alt="${carData.Marke} Logo" class="popup-logo"><br>${carData.titel || 'Unbekanntes Fahrzeug'}`;
+        } else {
+            popupTitle.textContent = carData.titel || 'Unbekanntes Fahrzeug';
+        }
     }
 
     // Content zusammenbauen
     let html = '';
 
-    if (carData.Marke) {
-        html += `<p><strong>Marke:</strong> ${carData.Marke}</p>`;
-    }
+    // Für Marken-Infos: Nur Fließtext anzeigen
+    if (isMarkenInfo) {
+        if (carData.titel) {
+            html += `<p><strong>${carData.titel}</strong></p>`;
+        }
+        if(carData.fließtext)
+        {
+            html += `<p style="text-align: justify; line-height: 1.6;">${carData.fließtext}</p>`;
+        }
+    } else {
+        // Für Auto-Infos: Alle Details anzeigen
+        if (carData.Marke) {
+            html += `<p><strong>Marke:</strong> ${carData.Marke}</p>`;
+        }
 
-    if (carData.Erscheinungsjahr) {
-        html += `<p><strong>Erscheinungsjahr:</strong> ${carData.Erscheinungsjahr}</p>`;
-    }
+        if (carData.Erscheinungsjahr) {
+            html += `<p><strong>Erscheinungsjahr:</strong> ${carData.Erscheinungsjahr}</p>`;
+        }
 
-    if (carData.Leistung) {
-        html += `<p><strong>Leistung:</strong> ${carData.Leistung}</p>`;
-    }
+        if (carData.Leistung) {
+            html += `<p><strong>Leistung:</strong> ${carData.Leistung}</p>`;
+        }
 
-    if (carData["0-100 Zeit"]) {
-        html += `<p><strong>0-100 km/h:</strong> ${carData["0-100 Zeit"]}</p>`;
-    }
+        if (carData["0-100 Zeit"]) {
+            html += `<p><strong>0-100 km/h:</strong> ${carData["0-100 Zeit"]}</p>`;
+        }
 
-    if (carData.fließtext) {
-        html += `<hr style="margin: 15px 0; opacity: 0.3;" />`;
-        html += `<p style="text-align: justify; line-height: 1.6;">${carData.fließtext}</p>`;
+        if (carData.fließtext) {
+            html += `<hr style="margin: 15px 0; opacity: 0.3;" />`;
+            html += `<p style="text-align: justify; line-height: 1.6;">${carData.fließtext}</p>`;
+        }
     }
 
     popupContent.innerHTML = html;
 
-    if (carData.audioSrc) {
+    // Audio nur bei Auto-Infos anzeigen (nicht bei Marken-Infos)
+    if (!isMarkenInfo && carData.audioSrc) {
         carAudio.src = carData.audioSrc;
         audioPlayBtn.style.display = 'block';
         audioPlayBtn.innerHTML = 'Audio abspielen';
@@ -168,11 +155,13 @@ function updatePopupContent(carData) {
 
         newAudioBtn.addEventListener('click', () => {
             if (carAudio.paused) {
+                backgroundAudio.pause();
                 carAudio.play();
                 newAudioBtn.innerHTML = 'Audio pausieren';
                 newAudioBtn.style.background = '#dc3545';
             } else {
                 carAudio.pause();
+                backgroundAudio.play();
                 newAudioBtn.innerHTML = 'Audio abspielen';
                 newAudioBtn.style.background = '#007bff';
             }
@@ -199,13 +188,33 @@ export function createMultipleButtons(scene, camera, controls, openPopupCallback
     positions.forEach((pos, index) => {
         // Button-Geometrie abhängig von Position
         let buttonGeometry;
-        if (pos.x > 50 || pos.x < -50) {
+        if ((pos.x > 50 || pos.x < -50) ) {
+            if(pos.x > 125 || pos.x < -125)
+            buttonGeometry = new THREE.BoxGeometry(0.2, 2, 4);
+            else
             buttonGeometry = new THREE.BoxGeometry(2, 1, 0.2);
         } else {
+            if(pos.z > 125 || pos.z < -125)
+            buttonGeometry = new THREE.BoxGeometry(4, 2, 0.2);
+            else
             buttonGeometry = new THREE.BoxGeometry(0.2, 1, 2);
         }
 
-        const textTexture = createTextTexture("INFOS");
+        let textTexture = createTextTexture("INFOS");
+
+        if(index == 24 || index == 27 ||index == 30 || index == 33)
+        {
+            textTexture = createTextTexture("Gründer");
+        }
+        else if(index == 25 || index == 28 ||index == 31 || index == 34)
+        {
+            textTexture = createTextTexture("Geschichte");
+        }
+        else if(index == 26 || index == 29 ||index == 32 || index == 35)
+        {
+            textTexture = createTextTexture("Heute");
+        }
+
 
         const buttonMaterial = new THREE.MeshStandardMaterial({
             map: textTexture,
