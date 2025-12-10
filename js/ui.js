@@ -80,6 +80,9 @@ export function initUI(controls) {
         controls.lock();
         crosshair.style.display = "block";
         crosshairOn = true;
+        let audio = document.getElementById("backroundMusic");
+        audio.volume = 0.2;
+        audio.play();
     });
 
     // PointerLock Events
