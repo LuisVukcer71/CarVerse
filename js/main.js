@@ -3,7 +3,7 @@ import { initControls } from './controls.js';
 import { initUI } from './ui.js';
 import { loadModel } from './model.js';
 import { createMultipleButtons } from './interactive.js';
-import { createMinimap } from './minimap.js'; 
+import { createMinimap } from './minimap.js';
 import { createTVs } from './tv.js';
 
 
@@ -24,11 +24,12 @@ async function loadMarkenData() {
     try {
         const marken = ['ferrari', 'tesla', 'porsche', 'bmw'];
         const allMarkenData = [];
-        
+
         for (const marke of marken) {
             const response = await fetch(`http://localhost:3000/${marke}`);
             const data = await response.json();
-            
+            console.log(data);
+
             // Jedes Element mit buttonid versehen
             data.forEach((item, index) => {
                 allMarkenData.push({
@@ -38,7 +39,7 @@ async function loadMarkenData() {
                 });
             });
         }
-        
+
         return allMarkenData;
     } catch (error) {
         console.error('Fehler beim Laden der Markendaten:', error);
@@ -61,10 +62,10 @@ async function init() {
     // Auto-Daten und Marken-Daten laden
     const autosData = await loadAutosData();
     const markenData = await loadMarkenData();
-    
+
     // Beide Datensätze kombinieren
     const allData = [...autosData, ...markenData];
-    
+
     console.log('Autos:', autosData.length);
     console.log('Marken:', markenData.length);
     console.log('Gesamt:', allData.length);
@@ -108,21 +109,21 @@ async function init() {
         { x: -20, y: 4, z: -128.8, buttonid: 'ferrari_1' },
         { x: 0, y: 4, z: -128.8, buttonid: 'ferrari_2' },
         { x: 20, y: 4, z: -128.8, buttonid: 'ferrari_3' },
-        
+
         // Tesla - Links
         { x: -128.8, y: 4, z: -20, buttonid: 'tesla_1' },
         { x: -128.8, y: 4, z: 0, buttonid: 'tesla_2' },
         { x: -128.8, y: 4, z: 20, buttonid: 'tesla_3' },
-        
+
         // Porsche - Hinten/Unten
         { x: -20, y: 4, z: 128.8, buttonid: 'porsche_1' },
         { x: 0, y: 4, z: 128.8, buttonid: 'porsche_2' },
         { x: 20, y: 4, z: 128.8, buttonid: 'porsche_3' },
-        
+
         // BMW - Rechts
-        { x: -128.8, y: 4, z: -20, buttonid: 'bmw_1' },
-        { x: -128.8, y: 4, z: 0, buttonid: 'bmw_2' },
-        { x: -128.8, y: 4, z: 20, buttonid: 'bmw_3' }
+        { x: 128.8, y: 4, z: -20, buttonid: 'bmw_1' },
+        { x: 128.8, y: 4, z: 0, buttonid: 'bmw_2' },
+        { x: 128.8, y: 4, z: 20, buttonid: 'bmw_3' }
     ];
 
     createMultipleButtons(scene, camera, controls, uiAPI.openPopup, buttonPositions, allData);
@@ -138,7 +139,7 @@ async function init() {
     function animate() {
         requestAnimationFrame(animate);
         movePlayer(controls, collisionObjects);
-        minimap.update(); 
+        minimap.update();
         tvSystem.update();
         renderer.render(scene, camera);
     }

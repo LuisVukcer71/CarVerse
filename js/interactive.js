@@ -55,6 +55,7 @@ function updatePopupContent(carData) {
     // Popup-Elemente holen
     const popupTitle = document.querySelector('#popup h2');
     const popupContent = document.getElementById('inhalt1');
+    const brandAudio = document.querySelector('#brandAudio')
     const carAudio = document.querySelector('#carAudio');
     const audioPlayBtn = document.querySelector('#audioPlayBtn');
     const backgroundAudio = document.querySelector('#backgroundAudio');
@@ -140,6 +141,40 @@ function updatePopupContent(carData) {
     }
 
     popupContent.innerHTML = html;
+
+    if (isMarkenInfo) {
+        brandAudio.src = carData.audioPath;
+        audioPlayBtn.style.display = 'block';
+        audioPlayBtn.innerHTML = 'Audio abspielen';
+
+        brandAudio.pause();
+        brandAudio.currentTime = 0;
+
+        const newAudioBtn = audioPlayBtn.cloneNode(true);
+        audioPlayBtn.parentNode.replaceChild(newAudioBtn, audioPlayBtn);
+
+        newAudioBtn.addEventListener('click', () => {
+            if (brandAudio.paused) {
+                backgroundAudio.pause();
+                brandAudio.play();
+                newAudioBtn.innerHTML = 'Audio pausieren';
+                newAudioBtn.style.background = '#dc3545';
+            } else {
+                brandAudio.pause();
+                backgroundAudio.play();
+                newAudioBtn.innerHTML = 'Audio abspielen';
+                newAudioBtn.style.background = '#007bff';
+            }
+        });
+
+        brandAudio.addEventListener('ended', () => {
+            newAudioBtn.innerHTML = 'Audio abspielen';
+            newAudioBtn.style.background = '#007bff';
+        });
+    } else {
+        audioPlayBtn.style.display = 'none';
+        brandAudio.src = '';
+    }
 
     // Audio nur bei Auto-Infos anzeigen (nicht bei Marken-Infos)
     if (!isMarkenInfo && carData.audioSrc) {
