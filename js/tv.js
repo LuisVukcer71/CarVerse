@@ -14,30 +14,30 @@ export function createTVs(scene, camera) {
   const tvConfigs = [
     {
       name: "Ferrari TV",
-      position: { x: 0, y: 17, z: -128.8 },
+      position: { x: 0, y: 14, z: -127.9 },
       rotation: { x: 0, y: 0, z: 0 },
-      size: { width: 24, height: 13.5 },
+      size: { width: 8.889*2, height: 5*2},
       videoSrc: "assets/videos/ferrari.mp4"
     },
     {
       name: "Tesla TV",
-      position: { x: -128.8, y: 17, z: 0 },
+      position: { x: -127.9, y: 14, z: 0 },
       rotation: { x: 0, y: Math.PI / 2, z: 0 },
-      size: { width: 24, height: 13.5 },
+      size: { width: 8.889*2, height: 5*2 },
       videoSrc: "assets/videos/tesla.mp4"
     },
     {
       name: "Porsche TV",
-      position: { x: 0, y: 17, z: 128.8 },
+      position: { x: 0, y: 14, z: 127.9 },
       rotation: { x: 0, y: Math.PI, z: 0 },
-      size: { width: 24, height: 13.5 },
+      size: { width: 8.889*2, height: 5 *2},
       videoSrc: "assets/videos/porsche.mp4"
     },
     {
       name: "BMW TV",
-      position: { x: 128.8, y: 17, z: 0 },
+      position: { x: 127.9, y: 14, z: 0 },
       rotation: { x: 0, y: -Math.PI / 2, z: 0 },
-      size: { width: 24, height: 13.5 },
+      size: { width: 8.889*2, height: 5*2 },
       videoSrc: "assets/videos/bmw.mp4"
     }
   ];
@@ -70,9 +70,7 @@ export function createTVs(scene, camera) {
   return { update: updateTVs };
 }
 
-/**
- * Erstellt einen einzelnen TV
- */
+
 function createTV(scene, config) {
   // Video-Element erstellen
   const video = document.createElement("video");
