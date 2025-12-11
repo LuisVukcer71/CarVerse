@@ -13,6 +13,7 @@ export function initUI(controls) {
     const volumeSlider = document.getElementById("volumeSlider");
     const speedSlider = document.getElementById("speedSlider");
     const carAudio = document.querySelector('#carAudio');
+    const brandAudio = document.querySelector('#brandAudio');
     const backgroundAudio = document.querySelector('#backgroundAudio');
     const volumeSlider2 = document.getElementById("volumeSlider2");
 
@@ -82,7 +83,7 @@ export function initUI(controls) {
         controls.lock();
         crosshair.style.display = "block";
         crosshairOn = true;
-        backgroundAudio.volume = parseFloat(volumeSlider2.value)/20;
+        backgroundAudio.volume = parseFloat(volumeSlider2.value);
         backgroundAudio.play();
     });
 
@@ -121,10 +122,14 @@ export function initUI(controls) {
         if (carAudio) {
             carAudio.volume = vol;
         }
+
+        if (brandAudio) {
+            brandAudio.volume = vol;
+        }
     });
 
     volumeSlider2.addEventListener("input", () => {
-        const vol = parseFloat(volumeSlider2.value)/20;
+        const vol = parseFloat(volumeSlider2.value);
         console.log("Lautstärke:", vol);
 
         // car audio lautstärke anpassen
