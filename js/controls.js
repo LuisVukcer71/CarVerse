@@ -22,7 +22,8 @@ export function initControls(camera, renderer) {
 
   return {
     controls,
-    movePlayer: (controls, collisionObjects) => movePlayer(controls, collisionObjects, camera)
+    movePlayer: (controls, collisionObjects) =>
+      movePlayer(controls, collisionObjects, camera),
   };
 }
 

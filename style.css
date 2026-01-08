@@ -1,294 +1,653 @@
 body {
-    margin: 0;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    background-color: black;
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background-color: black;
 }
 
 #loading-screen {
-    z-index: 9999;
-    transition: opacity 0.8s ease;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
 }
 
 #loading-screen.fade-out {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* === Start Button === */
 #startBtn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px 30px;
-    font-size: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 #startBtn:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* === ESC Menü === */
 #menu {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
-    background: rgba(0, 0, 0, 0.85);
-    color: white;
-    padding: 35px 45px;
-    border-radius: 15px;
-    text-align: center;
-    display: none;
-    min-width: 340px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 35px 45px;
+  border-radius: 15px;
+  text-align: center;
+  display: none;
+  min-width: 340px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
 }
 
 #menu.show {
-    display: block;
-    transform: translate(-50%, -50%) scale(1);
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 #menu h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .slider-container {
-    margin: 15px 0;
+  margin: 15px 0;
 }
 
 input[type="range"] {
-    width: 200px;
+  width: 200px;
 }
 
 #closeMenu {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 #closeMenu:hover {
-    color: #ff5555;
+  color: #ff5555;
 }
 
 /* === Steuerung === */
 .controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: 5px;
 }
 
 .key-row {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
 .key {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #888;
-    border-radius: 6px;
-    background-color: #1a1a1a;
-    box-shadow: inset 0 0 5px #000, 0 2px 4px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-    user-select: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background-color: #1a1a1a;
+  box-shadow: inset 0 0 5px #000, 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  user-select: none;
 }
 
 #info {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 16px;
-    opacity: 0.8;
-    margin-bottom: 30px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 16px;
+  opacity: 0.8;
+  margin-bottom: 30px;
 }
 
 #crosshair {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
-    z-index: 100;
-    display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 100;
+  display: none;
 }
 
 #crosshair::before,
 #crosshair::after {
-    content: "";
-    position: absolute;
-    background-color: white;
+  content: "";
+  position: absolute;
+  background-color: white;
 }
 
 #crosshair::before {
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    transform: translateY(-50%);
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%);
 }
 
 #crosshair::after {
-    left: 50%;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    transform: translateX(-50%);
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
 }
 
 /* === Popup === */
 #popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 35px 45px;
-    border-radius: 15px;
-    text-align: center;
-    display: none;
-    width: 500px;
-    max-width: 90vw;
-    max-height: 80vh;
-    overflow-y: auto;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 35px 45px;
+  border-radius: 15px;
+  text-align: center;
+  display: none;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
 }
 
 #popup.show {
-    display: block;
-    transform: translate(-50%, -50%) scale(1);
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 #popup h2 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 24px;
-    color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 24px;
+  color: #ffffff;
 }
 
 #popup p {
-    margin: 10px 0;
-    font-size: 15px;
-    line-height: 1.5;
-    text-align: center;
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
 }
 
 #popup p strong {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 /* Nur der Fließtext linksbündig */
 #popup p[style*="text-align: justify"] {
-    text-align: justify !important;
+  text-align: justify !important;
 }
 
 #popup img {
-    width: 80px;
-    height: auto;
-    margin: 10px;
+  width: 80px;
+  height: auto;
+  margin: 10px;
 }
 
 #closepopup {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 10;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 #closepopup:hover {
-    color: #ff5555;
+  color: #ff5555;
 }
 
 #inhalt1 {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 /* Scrollbar Styling für Popup */
 #popup::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 #popup::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
 #popup::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 
 #popup::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
 }
 
-#minimap{
+#minimap {
   position: fixed;
-    bottom: 60px;
-    right: 20px;
-    width: 200px;
-    height: 200px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  bottom: 60px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-
 .audioPlayBtn {
-    display: none;
-    width: 100%;
-    padding: 12px;
-    margin: 15px 0;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: 0.3s;
+  display: none;
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 #audioPlayBtn:hover {
-    background: #0056b3 !important;
-    transform: scale(1.02);
+  background: #0056b3 !important;
+  transform: scale(1.02);
 }
 
 #audioPlayBtn:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
+}
+
+/* === Progress Indicator (immer sichtbar) === */
+.progress-indicator {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  z-index: 999;
+  pointer-events: auto;
+}
+
+.progress-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.progress-toggle:hover {
+  background: rgba(0, 0, 0, 0.95);
+  border-color: #17a2b8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+}
+
+.progress-toggle i {
+  font-size: 20px;
+}
+
+/* === Progress Menu (Overlay) === */
+.progress-menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(20, 20, 20, 0.98) 100%
+  );
+  color: white;
+  padding: 0;
+  border-radius: 20px;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 85vh;
+  overflow-y: auto;
+  display: none;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10000;
+}
+
+.progress-menu.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(23, 162, 184, 0.1);
+  border-radius: 20px 20px 0 0;
+}
+
+.progress-header h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #17a2b8;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  color: #ff5555;
+  transform: rotate(90deg);
+}
+
+.progress-content {
+  padding: 30px;
+}
+
+/* === Progress Circle === */
+.progress-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.progress-circle {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+.progress-circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 8;
+}
+
+.progress-fill {
+  fill: none;
+  stroke: #17a2b8;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: calc(283 - (283 * var(--progress) / 100));
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 8px rgba(23, 162, 184, 0.6));
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.progress-text span:first-child {
+  display: block;
+  font-size: 42px;
+  font-weight: 800;
+  color: #17a2b8;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.progress-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.progress-stats {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+
+/* === Brand Progress === */
+.progress-brands {
+  margin-top: 30px;
+}
+
+.progress-brands h4 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#brand-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.brand-item {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.brand-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(23, 162, 184, 0.4);
+  transform: translateX(5px);
+}
+
+.brand-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.brand-name {
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-percentage {
+  font-weight: 700;
+  color: #17a2b8;
+  font-size: 16px;
+}
+
+.brand-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.brand-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #17a2b8 0%, #20c997 100%);
+  border-radius: 10px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(23, 162, 184, 0.5);
+}
+
+.brand-count {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: right;
+}
+
+/* === Reset Button === */
+.reset-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 12px;
+  background: rgba(255, 85, 85, 0.1);
+  border: 1px solid rgba(255, 85, 85, 0.3);
+  color: #ff5555;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+  background: rgba(255, 85, 85, 0.2);
+  border-color: #ff5555;
+  transform: translateY(-2px);
+}
+
+/* === Scrollbar Styling === */
+.progress-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.progress-menu::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.progress-menu::-webkit-scrollbar-thumb {
+  background: rgba(23, 162, 184, 0.4);
+  border-radius: 10px;
+}
+
+.progress-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(23, 162, 184, 0.6);
+}
+
+/* === Mobile Responsiveness === */
+@media (max-width: 600px) {
+  .progress-menu {
+    width: 95vw;
+    padding: 0;
+  }
+
+  .progress-header {
+    padding: 20px;
+  }
+
+  .progress-content {
+    padding: 20px;
+  }
+
+  .progress-circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .progress-text span:first-child {
+    font-size: 36px;
+  }
+
+  .progress-indicator {
+    top: 60px;
+    right: 10px;
+  }
+
+  .progress-toggle {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
 }
