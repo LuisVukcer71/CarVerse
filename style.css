@@ -1,294 +1,293 @@
 body {
-    margin: 0;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    background-color: black;
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background-color: black;
 }
 
 #loading-screen {
-    z-index: 9999;
-    transition: opacity 0.8s ease;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
 }
 
 #loading-screen.fade-out {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* === Start Button === */
 #startBtn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px 30px;
-    font-size: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 #startBtn:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* === ESC Menü === */
 #menu {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
-    background: rgba(0, 0, 0, 0.85);
-    color: white;
-    padding: 35px 45px;
-    border-radius: 15px;
-    text-align: center;
-    display: none;
-    min-width: 340px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 35px 45px;
+  border-radius: 15px;
+  text-align: center;
+  display: none;
+  min-width: 340px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
 }
 
 #menu.show {
-    display: block;
-    transform: translate(-50%, -50%) scale(1);
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 #menu h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .slider-container {
-    margin: 15px 0;
+  margin: 15px 0;
 }
 
 input[type="range"] {
-    width: 200px;
+  width: 200px;
 }
 
 #closeMenu {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 #closeMenu:hover {
-    color: #ff5555;
+  color: #ff5555;
 }
 
 /* === Steuerung === */
 .controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: 5px;
 }
 
 .key-row {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
 .key {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #888;
-    border-radius: 6px;
-    background-color: #1a1a1a;
-    box-shadow: inset 0 0 5px #000, 0 2px 4px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-    user-select: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background-color: #1a1a1a;
+  box-shadow: inset 0 0 5px #000, 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  user-select: none;
 }
 
 #info {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 16px;
-    opacity: 0.8;
-    margin-bottom: 30px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 16px;
+  opacity: 0.8;
+  margin-bottom: 30px;
 }
 
 #crosshair {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
-    z-index: 100;
-    display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 100;
+  display: none;
 }
 
 #crosshair::before,
 #crosshair::after {
-    content: "";
-    position: absolute;
-    background-color: white;
+  content: "";
+  position: absolute;
+  background-color: white;
 }
 
 #crosshair::before {
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    transform: translateY(-50%);
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%);
 }
 
 #crosshair::after {
-    left: 50%;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    transform: translateX(-50%);
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
 }
 
 /* === Popup === */
 #popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 35px 45px;
-    border-radius: 15px;
-    text-align: center;
-    display: none;
-    width: 500px;
-    max-width: 90vw;
-    max-height: 80vh;
-    overflow-y: auto;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 35px 45px;
+  border-radius: 15px;
+  text-align: center;
+  display: none;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
 }
 
 #popup.show {
-    display: block;
-    transform: translate(-50%, -50%) scale(1);
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 #popup h2 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 24px;
-    color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 24px;
+  color: #ffffff;
 }
 
 #popup p {
-    margin: 10px 0;
-    font-size: 15px;
-    line-height: 1.5;
-    text-align: center;
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
 }
 
 #popup p strong {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 /* Nur der Fließtext linksbündig */
 #popup p[style*="text-align: justify"] {
-    text-align: justify !important;
+  text-align: justify !important;
 }
 
 #popup img {
-    width: 80px;
-    height: auto;
-    margin: 10px;
+  width: 80px;
+  height: auto;
+  margin: 10px;
 }
 
 #closepopup {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 10;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 #closepopup:hover {
-    color: #ff5555;
+  color: #ff5555;
 }
 
 #inhalt1 {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 /* Scrollbar Styling für Popup */
 #popup::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 #popup::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
 #popup::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 
 #popup::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
 }
 
-#minimap{
+#minimap {
   position: fixed;
-    bottom: 60px;
-    right: 20px;
-    width: 200px;
-    height: 200px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  bottom: 60px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-
 .audioPlayBtn {
-    display: none;
-    width: 100%;
-    padding: 12px;
-    margin: 15px 0;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: 0.3s;
+  display: none;
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 #audioPlayBtn:hover {
-    background: #0056b3 !important;
-    transform: scale(1.02);
+  background: #0056b3 !important;
+  transform: scale(1.02);
 }
 
 #audioPlayBtn:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }

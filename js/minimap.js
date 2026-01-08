@@ -1,40 +1,39 @@
 import * as THREE from "https://esm.sh/three@0.160.0";
 
-
 export function createMinimap(scene, camera) {
-  // Minimap-Container 
-  const minimapContainer = document.createElement('div');
-  minimapContainer.id = 'minimap';
+  // Minimap-Container
+  const minimapContainer = document.createElement("div");
+  minimapContainer.id = "minimap";
   document.body.appendChild(minimapContainer);
 
-  // Canvas für Minimap 
-  const canvas = document.createElement('canvas');
+  // Canvas für Minimap
+  const canvas = document.createElement("canvas");
   canvas.width = 200;
   canvas.height = 200;
-  canvas.style.cssText = 'display: block; width: 100%; height: 100%;';
+  canvas.style.cssText = "display: block; width: 100%; height: 100%;";
   minimapContainer.appendChild(canvas);
-  
-  const ctx = canvas.getContext('2d');
 
-  // Museum-Dimensionen 
+  const ctx = canvas.getContext("2d");
+
+  // Museum-Dimensionen
   const MUSEUM_SIZE = 260;
   const MUSEUM_HALF = MUSEUM_SIZE / 2;
 
-  // Markenlogos 
+  // Markenlogos
   const logos = {
     ferrari: new Image(),
     tesla: new Image(),
     bmw: new Image(),
-    porsche: new Image()
+    porsche: new Image(),
   };
 
-  logos.ferrari.src = 'assets/logos/ferrari.png';
-  logos.tesla.src = 'assets/logos/tesla.png';
-  logos.bmw.src = 'assets/logos/bmw.png';
-  logos.porsche.src = 'assets/logos/porsche.png';
+  logos.ferrari.src = "assets/logos/ferrari.png";
+  logos.tesla.src = "assets/logos/tesla.png";
+  logos.bmw.src = "assets/logos/bmw.png";
+  logos.porsche.src = "assets/logos/porsche.png";
 
   let logosLoaded = 0;
-  Object.values(logos).forEach(img => {
+  Object.values(logos).forEach((img) => {
     img.onload = () => {
       logosLoaded++;
       if (logosLoaded === 4) {
@@ -43,61 +42,63 @@ export function createMinimap(scene, camera) {
     };
   });
 
-
   function worldToMinimap(worldX, worldZ) {
     const x = ((worldX + MUSEUM_HALF) / MUSEUM_SIZE) * canvas.width;
     const y = ((worldZ + MUSEUM_HALF) / MUSEUM_SIZE) * canvas.height;
     return { x, y };
   }
 
-
   function drawLogo(logo, centerX, centerZ, size = 25) {
     if (!logo.complete) return;
-    
+
     const pos = worldToMinimap(centerX, centerZ);
     const halfSize = size / 2;
-    
+
     ctx.save();
     ctx.globalAlpha = 0.6;
     ctx.drawImage(logo, pos.x - halfSize, pos.y - halfSize, size, size);
     ctx.restore();
   }
 
-
   function drawLocationDot(x, y, rotation, size = 10) {
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(rotation);
 
-
     const coneLength = 20;
     const coneWidth = 25;
-    
-    const gradient = ctx.createRadialGradient(0, 0, 0, 0, -coneLength/2, coneLength);
-    gradient.addColorStop(0, 'rgba(66, 133, 244, 0.3)');
-    gradient.addColorStop(0.5, 'rgba(66, 133, 244, 0.15)');
-    gradient.addColorStop(1, 'rgba(66, 133, 244, 0)');
-    
+
+    const gradient = ctx.createRadialGradient(
+      0,
+      0,
+      0,
+      0,
+      -coneLength / 2,
+      coneLength
+    );
+    gradient.addColorStop(0, "rgba(66, 133, 244, 0.3)");
+    gradient.addColorStop(0.5, "rgba(66, 133, 244, 0.15)");
+    gradient.addColorStop(1, "rgba(66, 133, 244, 0)");
+
     ctx.fillStyle = gradient;
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(-coneWidth/2, -coneLength);
-    ctx.lineTo(coneWidth/2, -coneLength);
+    ctx.lineTo(-coneWidth / 2, -coneLength);
+    ctx.lineTo(coneWidth / 2, -coneLength);
     ctx.closePath();
     ctx.fill();
 
-    ctx.fillStyle = 'rgba(66, 133, 244, 0.2)';
+    ctx.fillStyle = "rgba(66, 133, 244, 0.2)";
     ctx.beginPath();
     ctx.arc(0, 0, size + 4, 0, Math.PI * 2);
     ctx.fill();
 
-
-    ctx.fillStyle = '#4285F4';
+    ctx.fillStyle = "#4285F4";
     ctx.beginPath();
     ctx.arc(0, 0, size, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.strokeStyle = '#ffffff';
+    ctx.strokeStyle = "#ffffff";
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.arc(0, 0, size, 0, Math.PI * 2);
@@ -105,16 +106,15 @@ export function createMinimap(scene, camera) {
     ctx.restore();
   }
 
-
   function drawMinimap() {
     // Canvas leeren
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Hintergrund
-    ctx.fillStyle = '#1a1a1a';
+    ctx.fillStyle = "#1a1a1a";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
     ctx.lineWidth = 2;
 
     // Mittelraum
@@ -227,24 +227,26 @@ export function createMinimap(scene, camera) {
 
     // Standort
     const playerPos = worldToMinimap(camera.position.x, camera.position.z);
-    
+
     // Blickrichtung berechnen
     const forward = new THREE.Vector3();
     camera.getWorldDirection(forward);
     const angle = Math.atan2(forward.z, forward.x) + Math.PI / 2;
 
-  
     drawLocationDot(playerPos.x, playerPos.y, angle, 8);
 
     // Koordinaaten
-    ctx.font = '9px monospace';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-    ctx.textAlign = 'left';
+    ctx.font = "9px monospace";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+    ctx.textAlign = "left";
     ctx.fillText(`X: ${camera.position.x.toFixed(1)}`, 5, canvas.height - 10);
-    ctx.textAlign = 'right';
-    ctx.fillText(`Z: ${camera.position.z.toFixed(1)}`, canvas.width - 5, canvas.height - 10);
+    ctx.textAlign = "right";
+    ctx.fillText(
+      `Z: ${camera.position.z.toFixed(1)}`,
+      canvas.width - 5,
+      canvas.height - 10
+    );
   }
-
 
   function updateMinimap() {
     drawMinimap();
@@ -255,6 +257,6 @@ export function createMinimap(scene, camera) {
 
   return {
     update: updateMinimap,
-    element: minimapContainer
+    element: minimapContainer,
   };
 }
