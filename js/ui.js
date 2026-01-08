@@ -1,6 +1,3 @@
-/**
- * Initialisiert die gesamte UI und Event-Handler
- */
 export function initUI(controls) {
   // DOM-Elemente
   const startBtn = document.getElementById("startBtn");
@@ -96,15 +93,18 @@ export function initUI(controls) {
     menu.classList.remove("show");
   });
 
-  // I-Taste für Menü/Popup
+  // I-Taste für Menü/Popup (NICHT M-Taste!)
   window.addEventListener("keydown", (e) => {
-    if (e.code !== "KeyI") return;
-    if (popupOpen) {
-      closePopup();
-      return;
+    // NUR I-Taste für Settings-Menü
+    if (e.code === "KeyI") {
+      if (popupOpen) {
+        closePopup();
+        return;
+      }
+      e.preventDefault();
+      menuOpen ? closeMenu() : openMenu();
     }
-    e.preventDefault();
-    menuOpen ? closeMenu() : openMenu();
+    // M-Taste wird vom Progress-System gehandhabt
   });
 
   // Menü schließen Button
@@ -148,5 +148,6 @@ export function initUI(controls) {
     openPopup,
     closePopup,
     isPopupOpen: () => popupOpen,
+    isMenuOpen: () => menuOpen,
   };
 }

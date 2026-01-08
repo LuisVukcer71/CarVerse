@@ -5,6 +5,8 @@ import { loadModel } from "./model.js";
 import { createMultipleButtons } from "./interactive.js";
 import { createMinimap } from "./minimap.js";
 import { createTVs } from "./tv.js";
+import { initProgress } from "./progress.js";
+import { initProgressUI } from "./progressUI.js";
 
 // Auto-Daten laden
 async function loadAutosData() {
@@ -29,7 +31,6 @@ async function loadMarkenData() {
       const data = await response.json();
       console.log(data);
 
-      // Jedes Element mit buttonid versehen
       data.forEach((item, index) => {
         allMarkenData.push({
           ...item,
@@ -52,8 +53,12 @@ async function init() {
   const { controls, movePlayer } = initControls(camera, renderer);
   const collisionObjects = [];
 
-  // UI initialisieren und API erhalten
+  // UI initialisieren
   const uiAPI = initUI(controls);
+
+  // Progress System initialisieren
+  const progressAPI = initProgress(camera);
+  const progressUI = initProgressUI(progressAPI, controls);
 
   // Modell laden
   loadModel(scene, collisionObjects);
@@ -61,15 +66,13 @@ async function init() {
   // Auto-Daten und Marken-Daten laden
   const autosData = await loadAutosData();
   const markenData = await loadMarkenData();
-
-  // Beide Datensätze kombinieren
   const allData = [...autosData, ...markenData];
 
   console.log("Autos:", autosData.length);
   console.log("Marken:", markenData.length);
   console.log("Gesamt:", allData.length);
 
-  // Mehrere Buttons an verschiedenen Positionen erstellen
+  // Buttons erstellen
   const buttonPositions = [
     //Buttons vorne
     { x: -13, y: 1, z: -111, buttonid: 1 },
@@ -104,22 +107,18 @@ async function init() {
     { x: 68, y: 1, z: -13, buttonid: 24 },
 
     //Buttons Marken
-    // Ferrari - Vorne/Oben
     { x: -20, y: 4, z: -128.8, buttonid: "ferrari_1" },
     { x: 0, y: 4, z: -128.8, buttonid: "ferrari_2" },
     { x: 20, y: 4, z: -128.8, buttonid: "ferrari_3" },
 
-    // Tesla - Links
     { x: -128.8, y: 4, z: -20, buttonid: "tesla_1" },
     { x: -128.8, y: 4, z: 0, buttonid: "tesla_2" },
     { x: -128.8, y: 4, z: 20, buttonid: "tesla_3" },
 
-    // Porsche - Hinten/Unten
     { x: -20, y: 4, z: 128.8, buttonid: "porsche_1" },
     { x: 0, y: 4, z: 128.8, buttonid: "porsche_2" },
     { x: 20, y: 4, z: 128.8, buttonid: "porsche_3" },
 
-    // BMW - Rechts
     { x: 128.8, y: 4, z: -20, buttonid: "bmw_1" },
     { x: 128.8, y: 4, z: 0, buttonid: "bmw_2" },
     { x: 128.8, y: 4, z: 20, buttonid: "bmw_3" },
@@ -134,24 +133,28 @@ async function init() {
     allData
   );
 
-  // === MINIMAP ===
+  // Minimap & TVs
   const minimap = createMinimap(scene, camera);
-  console.log("Minimap initialisiert");
-
   const tvSystem = createTVs(scene, camera);
-  console.log("TV-System initialisiert");
 
-  // === Render Loop ===
+  console.log("✅ Alles bereit!");
+  console.log("🎮 Steuerung:");
+  console.log("   I = Einstellungen");
+  console.log("   P = Fortschritt");
+  console.log("   WASD = Bewegen");
+
+  // Render Loop
   function animate() {
     requestAnimationFrame(animate);
     movePlayer(controls, collisionObjects);
+    progressAPI.update();
     minimap.update();
     tvSystem.update();
     renderer.render(scene, camera);
   }
   animate();
 
-  // === Resize Handler ===
+  // Resize Handler
   window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -159,5 +162,4 @@ async function init() {
   });
 }
 
-// App starten
 init();
