@@ -47,7 +47,7 @@ export function createTVs(scene, camera) {
   // Erstelle jeden Fernseher
   tvConfigs.forEach((config) => {
     const tv = createTV(scene, config);
-    tvs.push(tv);
+      tvs.push(tv);
   });
 
   // Update-Funktion für alle TVs
@@ -66,6 +66,69 @@ export function createTVs(scene, camera) {
       }
     });
   }
+
+  // Interactivity: click to toggle pause/play, double-click to restart from 0 and play
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2();
+  let clickTimeout = null;
+
+  function getIntersectedTV(event) {
+    // If pointer lock is active (no reliable mouse coords), raycast from screen center
+    if (document.pointerLockElement) {
+      mouse.x = 0;
+      mouse.y = 0;
+      raycaster.setFromCamera(mouse, camera);
+    } else {
+      // left click only: ignore other buttons
+      if (event.button !== undefined && event.button !== 0) return null;
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+    }
+    const meshes = tvs.map(t => t.mesh);
+    const intersects = raycaster.intersectObjects(meshes, false);
+    if (intersects.length === 0) return null;
+    const mesh = intersects[0].object;
+    return tvs.find(t => t.mesh === mesh) || null;
+  }
+
+  function onClick(event) {
+    const tv = getIntersectedTV(event);
+    if (!tv) return;
+
+    // Wait a bit to allow dblclick to cancel
+    if (clickTimeout) clearTimeout(clickTimeout);
+    clickTimeout = setTimeout(() => {
+      // Toggle user pause state
+      tv.userPaused = !tv.userPaused;
+      if (tv.userPaused) {
+        try { tv.video.pause(); } catch (e) {}
+      } else {
+        tv.video.play().catch(() => {});
+      }
+      clickTimeout = null;
+    }, 220);
+  }
+
+  function onDblClick(event) {
+    const tv = getIntersectedTV(event);
+    if (!tv) return;
+    if (clickTimeout) {
+      clearTimeout(clickTimeout);
+      clickTimeout = null;
+    }
+    // Restart from beginning and play
+    tv.userPaused = false;
+    try {
+      tv.video.currentTime = 0;
+      tv.video.play().catch(() => {});
+    } catch (e) {
+      // some browsers may throw if currentTime set before loaded; ignore
+    }
+  }
+
+  window.addEventListener('click', onClick);
+  window.addEventListener('dblclick', onDblClick);
 
   return { update: updateTVs };
 }

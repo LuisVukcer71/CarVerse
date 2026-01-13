@@ -28,20 +28,35 @@ export function initControls(camera, renderer) {
 }
 
 /**
- * Prüft ob Bewegung möglich ist (Kollisionserkennung)
+ * Prüft ob Bewegung möglich ist (Kollisionserkennung mit Buttons)
  */
-function canMove(moveVector, camera, collisionObjects) {
+function canMove(moveVector, camera, collisionObjects, buttonCollisions = []) {
   const direction = moveVector.clone().normalize();
   const distance = moveVector.length();
+  
+  // Prüfe normale Kollisionsobjekte
   raycaster.set(camera.position, direction);
   const intersects = raycaster.intersectObjects(collisionObjects, true);
-  return !(intersects.length > 0 && intersects[0].distance < distance + 0.5);
+  if (intersects.length > 0 && intersects[0].distance < distance + 0.5) {
+    return false;
+  }
+  
+  // Prüfe Button-Barrieren
+  const newPos = camera.position.clone().add(moveVector);
+  for (const button of buttonCollisions) {
+    const distToButton = newPos.distanceTo(button.position);
+    if (distToButton < button.radius + 2) { // Radius des Buttons + 2 als Barriere
+      return false;
+    }
+  }
+  
+  return true;
 }
 
 /**
  * Bewegt den Spieler basierend auf Tastatureingaben
  */
-function movePlayer(controls, collisionObjects, camera) {
+function movePlayer(controls, collisionObjects, camera, buttonCollisions = []) {
   // Nicht bewegen wenn Menü offen ist
   if (!controls.isLocked) return;
 
@@ -74,8 +89,8 @@ function movePlayer(controls, collisionObjects, camera) {
   // Geschwindigkeit skalieren (diagonale Bewegung gleich schnell)
   if (movement.length() > 0) movement.normalize().multiplyScalar(speed);
 
-  // Kollision prüfen
-  if (canMove(movement, camera, collisionObjects)) {
+  // Kollision prüfen (mit Buttons!)
+  if (canMove(movement, camera, collisionObjects, buttonCollisions)) {
     camera.position.add(movement);
   }
 
