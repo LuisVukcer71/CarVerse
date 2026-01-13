@@ -5,6 +5,52 @@ import { loadModel } from './model.js';
 import { createMultipleButtons } from './interactive.js';
 import { createMinimap } from './minimap.js'; 
 import { createTVs } from './tv.js';
+import * as THREE from "https://esm.sh/three@0.160.0";
+
+
+// === Collision Detection Helper Functions ===
+
+/**
+ * Generiert Kollisionspunkte um eine Position herum
+ */
+function generateCollisionPoints(center, radius, pointCount) {
+    const points = [center.clone()]; // Center point
+    
+    for (let i = 0; i < pointCount; i++) {
+        const angle = (i / pointCount) * Math.PI * 2;
+        const x = center.x + Math.cos(angle) * radius;
+        const z = center.z + Math.sin(angle) * radius;
+        points.push(new THREE.Vector3(x, center.y, z));
+    }
+    
+    return points;
+}
+
+/**
+ * Verschiebt den Kollisions-Mittelpunkt um +/-4 je nach Button-Koordinate
+ * Regeln:
+ * - Wenn x oder z im Bereich [-13, -12] liegt -> diese Koordinate -= 4
+ * - Wenn x oder z im Bereich [12, 13] liegt -> diese Koordinate += 4
+ */
+function adjustCenter(center) {
+    const c = center.clone();
+
+    // Helper to check inclusive range
+    const inRange = (v, a, b) => v >= a && v <= b;
+
+    if (inRange(c.x, -13, -12)) {
+        c.x -= 7;
+    } else if (inRange(c.z, -13, -12)) {
+        c.z -= 7;
+    } else if (inRange(c.x, 12, 13)) {
+        c.x += 7;
+    } else if (inRange(c.z, 12, 13)) {
+        c.z += 7;
+    }
+
+    return c;
+}
+
 
 
 // Auto-Daten laden
@@ -127,6 +173,21 @@ async function init() {
 
     createMultipleButtons(scene, camera, controls, uiAPI.openPopup, buttonPositions, allData);
 
+    // === COLLISION DETECTION für normale Buttons (nur 1-24) ===
+    const collisionRadius = 7;
+    const buttonCollisions = buttonPositions
+        .filter(btn => typeof btn.buttonid === 'number')
+        .map(btn => {
+            const orig = new THREE.Vector3(btn.x, btn.y, btn.z);
+            const center = adjustCenter(orig);
+            return {
+                position: center,
+                radius: collisionRadius,
+                buttonid: btn.buttonid,
+                points: generateCollisionPoints(center, collisionRadius, 4)
+            };
+        });
+
     // === MINIMAP ===
     const minimap = createMinimap(scene, camera);
     console.log('Minimap initialisiert');
@@ -137,7 +198,8 @@ async function init() {
     // === Render Loop ===
     function animate() {
         requestAnimationFrame(animate);
-        movePlayer(controls, collisionObjects);
+        
+        movePlayer(controls, collisionObjects, buttonCollisions);
         minimap.update(); 
         tvSystem.update();
         renderer.render(scene, camera);

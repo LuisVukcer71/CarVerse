@@ -124,7 +124,7 @@ export function initUI(controls) {
     });
 
     volumeSlider2.addEventListener("input", () => {
-        const vol = parseFloat(volumeSlider2.value)/20;
+        const vol = parseFloat(volumeSlider2.value)/3;
         console.log("Lautstärke:", vol);
 
         // car audio lautstärke anpassen
