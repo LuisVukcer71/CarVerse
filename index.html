@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>3D Szene mit Menü</title>
+    <title>CarVerse - 3D Auto Museum</title>
     <link rel="stylesheet" href="style.css">
 
     <!-- bootstrap -->
@@ -12,15 +12,79 @@
 
     <!-- tabler icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+    <style>
+      /* === Index Page Navbar Styling === */
+      .navbar-enhanced {
+        background: linear-gradient(135deg, rgba(10, 10, 15, 0.95), rgba(20, 20, 35, 0.95)) !important;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .navbar-enhanced .navbar-brand {
+        font-size: 20px;
+        background: linear-gradient(135deg, #4aca9b, #17a2b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        transition: transform 0.3s ease;
+      }
+
+      .navbar-enhanced .navbar-brand:hover {
+        transform: scale(1.05);
+      }
+
+      .navbar-enhanced .navbar-brand i {
+        color: #4aca9b;
+      }
+
+      .navbar-enhanced .nav-link {
+        color: rgba(255, 255, 255, 0.7) !important;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .navbar-enhanced .nav-link:hover {
+        color: #4aca9b !important;
+      }
+
+      .navbar-enhanced .nav-link.text-success {
+        color: #4aca9b !important;
+        font-weight: 600;
+      }
+
+      .navbar-enhanced .navbar-brand:focus,
+      .navbar-enhanced .nav-link:focus {
+        outline: none;
+      }
+
+      /* === Footer Styling === */
+      footer.footer-enhanced {
+        background: linear-gradient(135deg, rgba(10, 10, 15, 0.95), rgba(20, 20, 35, 0.95)) !important;
+        border-top: 1px solid rgba(76, 175, 80, 0.2);
+        color: rgba(255, 255, 255, 0.8) !important;
+      }
+
+      footer.footer-enhanced .text-success {
+        color: #4aca9b !important;
+      }
+
+      footer.footer-enhanced .text-info {
+        color: #17a2b8 !important;
+      }
+    </style>
 </head>
 
 <body>
     <!-- Header -->
-    <nav class="navbar navbar-dark bg-dark fixed-top shadow-sm">
+    <nav class="navbar navbar-dark navbar-enhanced fixed-top shadow-sm">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <!-- Links: Name + About -->
-                <a class="navbar-brand fw-bold me-3" href="index.html">CarVerse</a>
+                <a class="navbar-brand fw-bold me-3" href="index.html">
+                    <i class="ti ti-cube me-2"></i>CarVerse
+                </a>
                 <a href="about.html" class="nav-link text-secondary">About</a>
             </div>
 
@@ -33,21 +97,34 @@
     </nav>
 
     <div id="loading-screen"
-        class="position-fixed top-0 start-0 w-100 h-100 bg-dark d-flex flex-column justify-content-center align-items-center text-center">
-        <div class="text-light mb-3 fs-5 fw-semibold">Museum wird geladen...</div>
-        <div class="progress w-50" style="max-width: 400px;">
-            <div id="loading-bar" class="progress-bar progress-bar-striped progress-bar-animated bg-info"
-                role="progressbar" style="width: 0%;"></div>
+        class="position-fixed top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
+        <div class="loading-content">
+            <div class="loading-logo mb-4">
+                <i class="ti ti-cube"></i>
+            </div>
+            <h2 class="loading-title mb-4">CarVerse</h2>
+            <div class="text-light mb-4 fs-5 fw-semibold">Museum wird geladen...</div>
+
+            <div class="loading-bar-container">
+                <div id="loading-bar" class="loading-bar-fill"></div>
+            </div>
+
+            <div id="loading-percentage" class="mt-4 loading-percentage">0%</div>
+
+            <div class="loading-dots mt-4">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
         </div>
-        <div id="loading-percentage" class="mt-2 text-secondary">0%</div>
     </div>
 
     <button id="startBtn">Klicken zum Starten</button>
     <audio id="backgroundAudio" src="./assets/music/BackgroundMusic.wav" loop></audio>
 
     <!-- Footer -->
-    <footer class="bg-dark text-center text-secondary py-2 fixed-bottom">
-        &copy; 2025 <span class="text-light fw-bold">CarVerse</span> – powered by <span
+    <footer class="footer-enhanced text-center py-3 fixed-bottom">
+        &copy; 2025 <span class="text-success fw-bold">CarVerse</span> – powered by <span
             class="text-info">Three.js</span>
     </footer>
 

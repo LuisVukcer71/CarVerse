@@ -90,7 +90,6 @@ const MUSEUM_ZONES = [
   },
 ];
 
-
 class ProgressTracker {
   constructor() {
     this.exploredZones = new Set();
@@ -189,6 +188,7 @@ class ProgressTracker {
       explored: this.exploredZones.size,
       total: MUSEUM_ZONES.length,
       byBrand: brandProgress,
+      exploredZones: Array.from(this.exploredZones),
     };
   }
 
@@ -223,5 +223,7 @@ export function initProgress(camera) {
     getProgress: () => tracker.getProgressDetails(),
     reset: () => tracker.reset(),
     onUpdate: (callback) => tracker.onProgressUpdate(callback),
+    getZoneById: (zoneId) => MUSEUM_ZONES.find((zone) => zone.id === zoneId),
+    getExploredZones: () => Array.from(tracker.exploredZones),
   };
 }

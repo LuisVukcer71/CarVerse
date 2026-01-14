@@ -179,7 +179,7 @@ async function init() {
   const buttonBarriers = createButtonBarriers(buttonPositions);
 
   // Minimap & TVs
-  const minimap = createMinimap(scene, camera);
+  const minimap = createMinimap(scene, camera, progressAPI);
   const tvSystem = createTVs(scene, camera);
 
   console.log("✅ Alles bereit!");
