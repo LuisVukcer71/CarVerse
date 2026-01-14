@@ -22,8 +22,8 @@ export function initControls(camera, renderer) {
 
   return {
     controls,
-    movePlayer: (controls, collisionObjects) =>
-      movePlayer(controls, collisionObjects, camera),
+    movePlayer: (controls, collisionObjects, camera, buttonBarriers = []) =>
+      movePlayer(controls, collisionObjects, camera, buttonBarriers),
   };
 }
 
@@ -43,9 +43,10 @@ function canMove(moveVector, camera, collisionObjects, buttonCollisions = []) {
   
   // Prüfe Button-Barrieren
   const newPos = camera.position.clone().add(moveVector);
-  for (const button of buttonCollisions) {
-    const distToButton = newPos.distanceTo(button.position);
-    if (distToButton < button.radius + 2) { // Radius des Buttons + 2 als Barriere
+  for (const barrier of buttonCollisions) {
+    const barrierPos = new THREE.Vector3(barrier.position.x, barrier.position.y, barrier.position.z);
+    const distToBarrier = newPos.distanceTo(barrierPos);
+    if (distToBarrier < barrier.radius) {
       return false;
     }
   }
