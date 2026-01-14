@@ -47,6 +47,48 @@ async function loadMarkenData() {
   }
 }
 
+// Button-Barrieren erstellen (Radius 7, mit Koordinaten-Verschiebung)
+function createButtonBarriers(buttonPositions) {
+  const barriers = [];
+  const BARRIER_RADIUS = 8;
+  const BARRIER_OFFSET = 7;
+
+  // Nur die regulären Buttons (nicht die Marken-Buttons)
+  const regularButtons = buttonPositions.slice(0, 24);
+
+  regularButtons.forEach((button) => {
+    let barrierX = button.x;
+    let barrierZ = button.z;
+
+    // Verschiebe X-Koordinate wenn negativ und klein (zwischen -13 und -12)
+    if (button.x < 0 && button.x > -15 && button.x < -10) {
+      barrierX = button.x - BARRIER_OFFSET; // -7 Punkte
+    }
+    // Verschiebe X-Koordinate wenn positiv und klein (zwischen 12 und 13)
+    else if (button.x > 0 && button.x > 10 && button.x < 15) {
+      barrierX = button.x + BARRIER_OFFSET; // +7 Punkte
+    }
+
+    // Verschiebe Z-Koordinate wenn negativ und klein (zwischen -13 und -12)
+    if (button.z < 0 && button.z > -15 && button.z < -10) {
+      barrierZ = button.z - BARRIER_OFFSET; // -7 Punkte
+    }
+    // Verschiebe Z-Koordinate wenn positiv und klein (zwischen 12 und 13)
+    else if (button.z > 0 && button.z > 10 && button.z < 15) {
+      barrierZ = button.z + BARRIER_OFFSET; // +7 Punkte
+    }
+
+    barriers.push({
+      position: { x: barrierX, y: button.y, z: barrierZ },
+      radius: BARRIER_RADIUS,
+      originalButton: button,
+    });
+  });
+
+  console.log(`✅ ${barriers.length} Button-Barrieren erstellt`);
+  return barriers;
+}
+
 // === Hauptinitialisierung ===
 async function init() {
   const { scene, camera, renderer } = initScene();
@@ -133,6 +175,9 @@ async function init() {
     allData
   );
 
+  // Button-Barrieren erstellen
+  const buttonBarriers = createButtonBarriers(buttonPositions);
+
   // Minimap & TVs
   const minimap = createMinimap(scene, camera);
   const tvSystem = createTVs(scene, camera);
@@ -146,7 +191,7 @@ async function init() {
   // Render Loop
   function animate() {
     requestAnimationFrame(animate);
-    movePlayer(controls, collisionObjects);
+    movePlayer(controls, collisionObjects, camera, buttonBarriers);
     progressAPI.update();
     minimap.update();
     tvSystem.update();

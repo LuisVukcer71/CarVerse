@@ -25,7 +25,6 @@ export function loadModel(scene, collisionObjects) {
       loadingScreen.classList.add("fade-out");
       setTimeout(() => {
         loadingScreen.style.display = "none";
-        startButton.style.display = "block";
       }, 800);
     }, 500);
   };
