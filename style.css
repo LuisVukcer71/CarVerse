@@ -8,11 +8,138 @@ body {
 #loading-screen {
   z-index: 9999;
   transition: opacity 0.8s ease;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
 }
 
 #loading-screen.fade-out {
   opacity: 0;
   pointer-events: none;
+}
+
+/* === Loading Screen Styling === */
+.loading-content {
+  text-align: center;
+  animation: fadeInScale 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.loading-logo {
+  font-size: 80px;
+  background: linear-gradient(135deg, #4aca9b, #17a2b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rotateIn 1s ease-in-out infinite;
+}
+
+@keyframes rotateIn {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.05);
+  }
+}
+
+.loading-title {
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #4aca9b, #17a2b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+  margin: 0;
+}
+
+.loading-bar-container {
+  width: 300px;
+  height: 6px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 10px;
+  margin: 20px auto;
+  overflow: hidden;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  box-shadow: inset 0 0 10px rgba(76, 175, 80, 0.1);
+}
+
+#loading-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4aca9b, #17a2b8, #4aca9b);
+  background-size: 200% 100%;
+  border-radius: 10px;
+  width: 0%;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6),
+    inset 0 0 5px rgba(255, 255, 255, 0.3);
+  animation: gradientShift 2s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.loading-percentage {
+  font-size: 28px;
+  font-weight: 800;
+  color: #4aca9b;
+  min-width: 80px;
+}
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4aca9b;
+  animation: dotAnimation 1.4s infinite ease-in-out;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dotAnimation {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
 }
 
 /* === Start Button === */
@@ -649,5 +776,188 @@ input[type="range"] {
   .progress-toggle {
     padding: 8px 12px;
     font-size: 14px;
+  }
+}
+/* === Progress Popup (neue Progress UI) === */
+#progressPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  display: none;
+  min-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 0 40px rgba(76, 175, 80, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#progressPopup.show {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+#closeProgressPopup {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #4aca9b;
+  font-size: 28px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 5px 10px;
+}
+
+#closeProgressPopup:hover {
+  color: #ff5555;
+  transform: rotate(90deg);
+}
+
+#progressPopup h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #4aca9b;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.progress-circle-small {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+}
+
+.progress-circle-small svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-bg-circle {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 6;
+}
+
+.progress-fill-circle {
+  fill: none;
+  stroke: #4aca9b;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.6));
+}
+
+.progress-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-weight: bold;
+}
+
+#progress-percent-text {
+  display: block;
+  font-size: 36px;
+  color: #4aca9b;
+  font-weight: 800;
+}
+
+#progressPopup p {
+  text-align: center;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 15px 0;
+}
+
+#progressPopup strong {
+  color: #4aca9b;
+}
+
+#brand-list {
+  margin: 20px 0;
+}
+
+#brand-list p {
+  text-align: left;
+  font-size: 14px;
+  padding: 10px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #4aca9b;
+  margin: 8px 0;
+  transition: all 0.3s ease;
+}
+
+#brand-list p:hover {
+  background: rgba(76, 175, 80, 0.2);
+  transform: translateX(5px);
+}
+
+#reset-progress-btn {
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+#reset-progress-btn:hover {
+  background: rgba(255, 85, 85, 0.35) !important;
+  border-color: rgba(255, 85, 85, 0.8) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 85, 85, 0.3);
+}
+
+/* Scrollbar für Progress Popup */
+#progressPopup::-webkit-scrollbar {
+  width: 8px;
+}
+
+#progressPopup::-webkit-scrollbar-track {
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 10px;
+}
+
+#progressPopup::-webkit-scrollbar-thumb {
+  background: rgba(76, 175, 80, 0.4);
+  border-radius: 10px;
+}
+
+#progressPopup::-webkit-scrollbar-thumb:hover {
+  background: rgba(76, 175, 80, 0.6);
+}
+
+/* Mobile Responsiveness für Progress Popup */
+@media (max-width: 600px) {
+  #progressPopup {
+    min-width: 90vw;
+    padding: 30px 20px;
+    max-height: 90vh;
+  }
+
+  .progress-circle-small {
+    width: 120px;
+    height: 120px;
+  }
+
+  #progress-percent-text {
+    font-size: 28px;
+  }
+
+  #progressPopup h2 {
+    font-size: 24px;
   }
 }
