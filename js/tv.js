@@ -56,10 +56,12 @@ export function createTVs(scene, camera) {
       const distance = camera.position.distanceTo(tv.mesh.position);
 
       if (distance <= ACTIVATION_RANGE) {
-        if (tv.video.paused) {
+        // Nur autoplay wenn der Benutzer nicht manuell pausiert hat
+        if (!tv.userPaused && tv.video.paused) {
           tv.video.play().catch((e) => console.log("Video autoplay:", e));
         }
       } else {
+        // Außerhalb der Reichweite: Pausieren (aber userPaused-State merken)
         if (!tv.video.paused) {
           tv.video.pause();
         }
@@ -93,6 +95,9 @@ export function createTVs(scene, camera) {
   }
 
   function onClick(event) {
+    // Nur Linksklick
+    if (event.button !== 0) return;
+    
     const tv = getIntersectedTV(event);
     if (!tv) return;
 
@@ -102,15 +107,30 @@ export function createTVs(scene, camera) {
       // Toggle user pause state
       tv.userPaused = !tv.userPaused;
       if (tv.userPaused) {
-        try { tv.video.pause(); } catch (e) {}
+        try { 
+          tv.video.pause(); 
+          console.log("Video pausiert");
+        } catch (e) {
+          console.error("Fehler beim Pausieren:", e);
+        }
       } else {
-        tv.video.play().catch(() => {});
+        try {
+          tv.video.play().catch((err) => {
+            console.error("Fehler beim Abspielen:", err);
+          });
+          console.log("Video startet");
+        } catch (e) {
+          console.error("Fehler beim Abspielen:", e);
+        }
       }
       clickTimeout = null;
     }, 220);
   }
 
   function onDblClick(event) {
+    // Nur Linksklick
+    if (event.button !== 0) return;
+    
     const tv = getIntersectedTV(event);
     if (!tv) return;
     if (clickTimeout) {
@@ -121,9 +141,13 @@ export function createTVs(scene, camera) {
     tv.userPaused = false;
     try {
       tv.video.currentTime = 0;
-      tv.video.play().catch(() => {});
+      tv.video.play().catch((err) => {
+        console.error("Fehler beim Abspielen nach Neustart:", err);
+      });
+      console.log("Video restartet von Anfang");
     } catch (e) {
       // some browsers may throw if currentTime set before loaded; ignore
+      console.error("Fehler beim Neustart:", e);
     }
   }
 
@@ -167,5 +191,5 @@ function createTV(scene, config) {
 
   scene.add(mesh);
 
-  return { mesh, video, texture: videoTexture };
+  return { mesh, video, texture: videoTexture, userPaused: false };
 }

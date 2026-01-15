@@ -69,13 +69,18 @@ export class ProgressUI {
     // Schließen-Button
     closeBtn.addEventListener("click", () => this.closePopup());
 
-    // P-Taste zum Öffnen/Schließen
-    window.addEventListener("keydown", (e) => {
-      if (e.code === "KeyP") {
-        e.preventDefault();
-        this.togglePopup();
-      }
-    });
+    // P-Taste zum Öffnen/Schließen - globaler Listener mit Prevention
+    document.addEventListener(
+      "keydown",
+      (e) => {
+        if (e.code === "KeyP" && !e.repeat) {
+          e.preventDefault();
+          e.stopPropagation();
+          this.togglePopup();
+        }
+      },
+      true
+    );
 
     // Reset-Button
     resetBtn.addEventListener("click", () => {

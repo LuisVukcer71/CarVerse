@@ -1,6 +1,6 @@
 import * as THREE from "https://esm.sh/three@0.160.0";
 
-export function createMinimap(scene, camera) {
+export function createMinimap(scene, camera, progressAPI = null) {
   // Minimap-Container
   const minimapContainer = document.createElement("div");
   minimapContainer.id = "minimap";
@@ -58,6 +58,25 @@ export function createMinimap(scene, camera) {
     ctx.globalAlpha = 0.6;
     ctx.drawImage(logo, pos.x - halfSize, pos.y - halfSize, size, size);
     ctx.restore();
+  }
+
+  function drawZoneBounds(zone, fillColor, alpha = 0.15) {
+    const { minX, maxX, minZ, maxZ } = zone.bounds;
+    const topLeft = worldToMinimap(minX, minZ);
+    const topRight = worldToMinimap(maxX, minZ);
+    const bottomRight = worldToMinimap(maxX, maxZ);
+    const bottomLeft = worldToMinimap(minX, maxZ);
+
+    ctx.fillStyle = fillColor;
+    ctx.globalAlpha = alpha;
+    ctx.beginPath();
+    ctx.moveTo(topLeft.x, topLeft.y);
+    ctx.lineTo(topRight.x, topRight.y);
+    ctx.lineTo(bottomRight.x, bottomRight.y);
+    ctx.lineTo(bottomLeft.x, bottomLeft.y);
+    ctx.closePath();
+    ctx.fill();
+    ctx.globalAlpha = 1;
   }
 
   function drawLocationDot(x, y, rotation, size = 10) {
@@ -218,6 +237,19 @@ export function createMinimap(scene, camera) {
     ctx.moveTo(...Object.values(worldToMinimap(28, 7)));
     ctx.lineTo(...Object.values(worldToMinimap(50, 7)));
     ctx.stroke();
+
+    // === Erkundete Bereiche grün anzeigen (wenn Progress verfügbar) ===
+    if (progressAPI) {
+      const progressData = progressAPI.getProgress();
+      if (progressData && progressData.exploredZones) {
+        progressData.exploredZones.forEach((zoneId) => {
+          const zone = progressAPI.getZoneById(zoneId);
+          if (zone) {
+            drawZoneBounds(zone, "rgba(76, 175, 80, 1)", 0.25); // Grün mit höherer Opacity
+          }
+        });
+      }
+    }
 
     // === Marken-Logos in den Räumen ===
     drawLogo(logos.ferrari, 0, -87.5, 30);
